@@ -28,7 +28,7 @@ namespace Schedule.Data.IntegrationTests
                 .UseInMemoryDatabase().Options;
             var dbContext = new ScheduleContext(_options);
             SeedInMemoryStore();
-            _scheduleData = new ScheduleData(new GenericRepository<ClassType>(dbContext), new GenericRepository<TimeTable>(dbContext));
+            _scheduleData = new ScheduleData(new ScheduleUow(dbContext));
         }
 
         #region ClassType

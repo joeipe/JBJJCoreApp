@@ -11,26 +11,24 @@ namespace Schedule.Data.Services
 {
     public class ScheduleData
     {
-        private GenericRepository<ClassType> _classTypeRepo;
-        private GenericRepository<TimeTable> _timeTableRepo;
+        private ScheduleUow _scheduleUow;
 
-        public ScheduleData(GenericRepository<ClassType> classTypeRepo, GenericRepository<TimeTable> timeTableRepo)
+        public ScheduleData(ScheduleUow scheduleUow)
         {
-            _classTypeRepo = classTypeRepo;
-            _timeTableRepo = timeTableRepo;
+            _scheduleUow = scheduleUow;
         }
 
         #region ClassType
         public IList<ClassTypeViewModel> GetClassType()
         {
-            var classTypesData = _classTypeRepo.GetAll();
+            var classTypesData = _scheduleUow.ClassTypesRepo.GetAll();
             var classTypesVM = ObjectMapper.Mapper.Map<IList<ClassTypeViewModel>>(classTypesData);
             return classTypesVM;
         }
 
         public ClassTypeViewModel GetClassTypeById(int id)
         {
-            var classTypeData = _classTypeRepo.GetById(id);
+            var classTypeData = _scheduleUow.ClassTypesRepo.GetById(id);
             var classTypeVM = ObjectMapper.Mapper.Map<ClassTypeViewModel>(classTypeData);
             return classTypeVM;
         }
@@ -38,26 +36,29 @@ namespace Schedule.Data.Services
         public void AddClassType(ClassTypeViewModel value)
         {
             var classTypeData = ObjectMapper.Mapper.Map<ClassType>(value);
-            _classTypeRepo.Add(classTypeData);
+            _scheduleUow.ClassTypesRepo.Add(classTypeData);
+            _scheduleUow.Save();
         }
 
         public void UpdateClassType(ClassTypeViewModel value)
         {
             var classTypeData = ObjectMapper.Mapper.Map<ClassType>(value);
-            _classTypeRepo.Edit(classTypeData);
+            _scheduleUow.ClassTypesRepo.Edit(classTypeData);
+            _scheduleUow.Save();
         }
 
         public void DeleteClassType(ClassTypeViewModel value)
         {
             var classTypeData = ObjectMapper.Mapper.Map<ClassType>(value);
-            _classTypeRepo.Delete(classTypeData);
+            _scheduleUow.ClassTypesRepo.Delete(classTypeData);
+            _scheduleUow.Save();
         }
         #endregion
 
         #region TimeTable
         public IList<TimeTableViewModel> GetTimeTable()
         {
-            var timeTablesData = _timeTableRepo.GetAll();
+            var timeTablesData = _scheduleUow.TimeTablesRepo.GetAll();
             //var timeTablesData = _timeTableRepo.SearchForInclude(x => x.Id>0, i => i.ClassType);
             var timeTablesVM = ObjectMapper.Mapper.Map<IList<TimeTableViewModel>>(timeTablesData);
             return timeTablesVM;
@@ -65,14 +66,14 @@ namespace Schedule.Data.Services
 
         public TimeTableViewModel GetTimeTableById(int id)
         {
-            var timeTableData = _timeTableRepo.GetById(id);
+            var timeTableData = _scheduleUow.TimeTablesRepo.GetById(id);
             var timeTableVM = ObjectMapper.Mapper.Map<TimeTableViewModel>(timeTableData);
             return timeTableVM;
         }
 
         public TimeTableViewModel GetTimeTableWithClassTypeById(int id)
         {
-            var timeTableData = _timeTableRepo
+            var timeTableData = _scheduleUow.TimeTablesRepo
                 .SearchForInclude
                 (
                     t => t.Id == id,
@@ -86,19 +87,22 @@ namespace Schedule.Data.Services
         public void AddTimeTable(TimeTableViewModel value)
         {
             var timeTableData = ObjectMapper.Mapper.Map<TimeTable>(value);
-            _timeTableRepo.Add(timeTableData);
+            _scheduleUow.TimeTablesRepo.Add(timeTableData);
+            _scheduleUow.Save();
         }
 
         public void UpdateTimeTable(TimeTableViewModel value)
         {
             var timeTableData = ObjectMapper.Mapper.Map<TimeTable>(value);
-            _timeTableRepo.Edit(timeTableData);
+            _scheduleUow.TimeTablesRepo.Edit(timeTableData);
+            _scheduleUow.Save();
         }
 
         public void DeleteTimeTable(TimeTableViewModel value)
         {
             var timeTableData = ObjectMapper.Mapper.Map<TimeTable>(value);
-            _timeTableRepo.Delete(timeTableData);
+            _scheduleUow.TimeTablesRepo.Delete(timeTableData);
+            _scheduleUow.Save();
         }
         #endregion
     }

@@ -35,7 +35,6 @@ namespace SharedKernel.Data
             {
                 _dataContext.FixState(item);
             }
-            Save();
         }
         public virtual void Delete(params TEntity[] items)
         {
@@ -43,7 +42,6 @@ namespace SharedKernel.Data
             {
                 _dataTable.Remove(item);
             }
-            Save();
         }
 
         public virtual IEnumerable<TEntity> GetAll()
@@ -76,11 +74,6 @@ namespace SharedKernel.Data
         {
             IQueryable<TEntity> queryable = _dataTable;
             return includeProperties.Aggregate(queryable, (current, includeProperty) => current.Include(includeProperty));
-        }
-
-        private void Save()
-        {
-            _dataContext.SaveChanges();
         }
     }
 }
