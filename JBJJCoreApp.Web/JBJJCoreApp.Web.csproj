@@ -16,6 +16,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Schedule.Data\Schedule.Data.csproj" />
+    <ProjectReference Include="..\Student.Data\Student.Data.csproj" />
   </ItemGroup>
 
 </Project>

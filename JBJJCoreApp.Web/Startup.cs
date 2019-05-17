@@ -13,6 +13,8 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Schedule.Data;
 using Schedule.Data.Services;
+using Student.Data;
+using Student.Data.Services;
 
 namespace JBJJCoreApp.Web
 {
@@ -33,6 +35,12 @@ namespace JBJJCoreApp.Web
             );
             services.AddScoped<ScheduleUow>();
             services.AddScoped<ScheduleData>();
+
+            services.AddDbContext<StudentContext>(options =>
+                options.UseSqlServer(Configuration.GetConnectionString("JBJJCoreDBConnectionString"))
+            );
+            services.AddScoped<StudentUow>();
+            services.AddScoped<StudentData>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
