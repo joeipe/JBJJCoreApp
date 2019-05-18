@@ -1,40 +1,31 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Schedule.Domain;
-using Schedule.Domain.Enums;
-using SharedKernel;
-using SharedKernel.Interfaces;
+﻿using DayAtDojo.Domain;
+using Microsoft.EntityFrameworkCore;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 
-namespace Schedule.Data
+namespace DayAtDojo.Data
 {
-    public class ScheduleContext : DbContext
+    public class DayAtDojoContext : DbContext
     {
-        public ScheduleContext(DbContextOptions<ScheduleContext> options)
+        public DayAtDojoContext(DbContextOptions<DayAtDojoContext> options)
             :base(options)
         {
 
         }
-        public DbSet<ClassType> ClassTypes { get; set; }
-        public DbSet<TimeTable> TimeTables { get; set; }
 
-        /*
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            optionsBuilder.UseSqlServer("Server=.;Database=JBJJCoreDB;Trusted_Connection=True;");
-        }*/
+        public DbSet<Outcome> Outcomes { get; set; }
+        public DbSet<Attendance> Attendance { get; set; }
+        public DbSet<SparringDetails> SparringDetails { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.HasDefaultSchema("Schedule");
+            modelBuilder.HasDefaultSchema("DayAtDojo");
             foreach (var entityType in modelBuilder.Model.GetEntityTypes())
             {
                 modelBuilder.Entity(entityType.Name).Property<DateTime>("CreatedDate");
                 modelBuilder.Entity(entityType.Name).Property<DateTime>("UpdatedDate");
                 modelBuilder.Entity(entityType.Name).Ignore("IsDirty");
             }
-
             base.OnModelCreating(modelBuilder);
         }
 

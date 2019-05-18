@@ -34,7 +34,7 @@ namespace JBJJCoreApp.Web.Controllers
             }
         }
 
-        [HttpGet]
+        [HttpGet("{id}")]
         public ActionResult GetGradeById(int id)
         {
             try
@@ -94,7 +94,7 @@ namespace JBJJCoreApp.Web.Controllers
             }
         }
 
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public ActionResult DeleteGrade(int id)
         {
             try
@@ -130,7 +130,7 @@ namespace JBJJCoreApp.Web.Controllers
             }
         }
 
-        [HttpGet]
+        [HttpGet("{id}")]
         public ActionResult GetPersonById(int id)
         {
             try
@@ -150,7 +150,7 @@ namespace JBJJCoreApp.Web.Controllers
             }
         }
 
-        [HttpGet]
+        [HttpGet("{id}")]
         public ActionResult GetPersonWithGradeById(int id)
         {
             try
@@ -210,7 +210,7 @@ namespace JBJJCoreApp.Web.Controllers
             }
         }
 
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public ActionResult DeletePerson(int id)
         {
             try

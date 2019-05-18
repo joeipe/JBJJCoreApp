@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using DayAtDojo.Data;
+using DayAtDojo.Data.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -41,6 +43,18 @@ namespace JBJJCoreApp.Web
             );
             services.AddScoped<StudentUow>();
             services.AddScoped<StudentData>();
+
+            services.AddDbContext<DayAtDojoContext>(options =>
+                options.UseSqlServer(Configuration.GetConnectionString("JBJJCoreDBConnectionString"))
+            );
+            services.AddDbContext<ReferenceScheduleContext>(options =>
+                options.UseSqlServer(Configuration.GetConnectionString("JBJJCoreDBConnectionString"))
+            );
+            services.AddDbContext<ReferenceStudentContext>(options =>
+                options.UseSqlServer(Configuration.GetConnectionString("JBJJCoreDBConnectionString"))
+            );
+            services.AddScoped<DayAtDojoUow>();
+            services.AddScoped<DayAtDojoData>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }

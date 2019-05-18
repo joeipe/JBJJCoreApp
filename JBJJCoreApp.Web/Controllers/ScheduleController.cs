@@ -93,7 +93,7 @@ namespace JBJJCoreApp.Web.Controllers
             }
         }
 
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public ActionResult DeleteClassType(int id)
         {
             try
@@ -209,7 +209,7 @@ namespace JBJJCoreApp.Web.Controllers
             }
         }
 
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public ActionResult DeleteTimeTable(int id)
         {
             try
