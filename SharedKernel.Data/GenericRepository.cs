@@ -8,7 +8,7 @@ using System.Linq.Expressions;
 
 namespace SharedKernel.Data
 {
-    public class GenericRepository<TEntity> where TEntity : class, IEntity, IClientChangeTracker
+    public class GenericRepository<TEntity> where TEntity : class, IEntity//, IClientChangeTracker
     {
         protected DbContext _dataContext;
         protected DbSet<TEntity> _dataTable;

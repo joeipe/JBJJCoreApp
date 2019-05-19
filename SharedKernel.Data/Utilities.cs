@@ -28,7 +28,7 @@ namespace SharedKernel.Data
             }
         }
 
-        public static void FixState(this DbContext context, IClientChangeTracker item)
+        public static void FixState(this DbContext context, Object item)
         {
             context.ChangeTracker.TrackGraph(item, e => ApplyStateUsingIsKeySet(e.Entry));
         }
