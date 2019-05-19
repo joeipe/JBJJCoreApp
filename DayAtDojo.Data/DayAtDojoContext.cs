@@ -26,6 +26,8 @@ namespace DayAtDojo.Data
                 modelBuilder.Entity(entityType.Name).Property<DateTime>("UpdatedDate");
                 modelBuilder.Entity(entityType.Name).Ignore("IsDirty");
             }
+            modelBuilder.Ignore<TimeTableClassAttended>();
+            modelBuilder.Ignore<PersonSparringPartner>();
             base.OnModelCreating(modelBuilder);
         }
 

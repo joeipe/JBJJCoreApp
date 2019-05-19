@@ -32,15 +32,11 @@ namespace DayAtDojo.Data.Migrations
 
                     b.Property<string>("TechniqueOfTheDay");
 
-                    b.Property<int?>("TimeTableClassAttendedId");
-
                     b.Property<int>("TimeTableId");
 
                     b.Property<DateTime>("UpdatedDate");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("TimeTableClassAttendedId");
 
                     b.ToTable("Attendance");
                 });
@@ -62,27 +58,6 @@ namespace DayAtDojo.Data.Migrations
                     b.ToTable("Outcomes");
                 });
 
-            modelBuilder.Entity("DayAtDojo.Domain.PersonSparringPartner", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<DateTime>("CreatedDate");
-
-                    b.Property<string>("FullName");
-
-                    b.Property<string>("Grade");
-
-                    b.Property<int>("Stripe");
-
-                    b.Property<DateTime>("UpdatedDate");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("PersonSparringPartner");
-                });
-
             modelBuilder.Entity("DayAtDojo.Domain.SparringDetails", b =>
                 {
                     b.Property<int>("Id")
@@ -97,8 +72,6 @@ namespace DayAtDojo.Data.Migrations
 
                     b.Property<int>("PersonId");
 
-                    b.Property<int?>("PersonSparringPartnerId");
-
                     b.Property<string>("TechniqueUsed");
 
                     b.Property<DateTime>("UpdatedDate");
@@ -109,43 +82,7 @@ namespace DayAtDojo.Data.Migrations
 
                     b.HasIndex("OutcomeId");
 
-                    b.HasIndex("PersonSparringPartnerId");
-
                     b.ToTable("SparringDetails");
-                });
-
-            modelBuilder.Entity("DayAtDojo.Domain.TimeTableClassAttended", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("ClassType");
-
-                    b.Property<DateTime>("CreatedDate");
-
-                    b.Property<string>("DayofWeek");
-
-                    b.Property<int>("EndTimeHr");
-
-                    b.Property<int>("EndTimeMin");
-
-                    b.Property<int>("StartTimeHr");
-
-                    b.Property<int>("StartTimeMin");
-
-                    b.Property<DateTime>("UpdatedDate");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("TimeTableClassAttended");
-                });
-
-            modelBuilder.Entity("DayAtDojo.Domain.Attendance", b =>
-                {
-                    b.HasOne("DayAtDojo.Domain.TimeTableClassAttended", "TimeTableClassAttended")
-                        .WithMany()
-                        .HasForeignKey("TimeTableClassAttendedId");
                 });
 
             modelBuilder.Entity("DayAtDojo.Domain.SparringDetails", b =>
@@ -159,10 +96,6 @@ namespace DayAtDojo.Data.Migrations
                         .WithMany("SparringDetails")
                         .HasForeignKey("OutcomeId")
                         .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("DayAtDojo.Domain.PersonSparringPartner", "PersonSparringPartner")
-                        .WithMany()
-                        .HasForeignKey("PersonSparringPartnerId");
                 });
 #pragma warning restore 612, 618
         }
