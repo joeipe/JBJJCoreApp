@@ -36,14 +36,14 @@ namespace Schedule.Data.Services
         public void AddClassType(ClassTypeViewModel value)
         {
             var classTypeData = ObjectMapper.Mapper.Map<ClassType>(value);
-            _scheduleUow.ClassTypesRepo.Add(classTypeData);
+            _scheduleUow.ClassTypesRepo.Add<ClassType>(classTypeData);
             _scheduleUow.Save();
         }
 
         public void UpdateClassType(ClassTypeViewModel value)
         {
             var classTypeData = ObjectMapper.Mapper.Map<ClassType>(value);
-            _scheduleUow.ClassTypesRepo.Edit(classTypeData);
+            _scheduleUow.ClassTypesRepo.Edit<ClassType>(classTypeData);
             _scheduleUow.Save();
         }
 
@@ -87,14 +87,14 @@ namespace Schedule.Data.Services
         public void AddTimeTable(TimeTableViewModel value)
         {
             var timeTableData = ObjectMapper.Mapper.Map<TimeTable>(value);
-            _scheduleUow.TimeTablesRepo.Add(timeTableData);
+            _scheduleUow.TimeTablesRepo.Add<TimeTable>(timeTableData);
             _scheduleUow.Save();
         }
 
         public void UpdateTimeTable(TimeTableViewModel value)
         {
             var timeTableData = ObjectMapper.Mapper.Map<TimeTable>(value);
-            _scheduleUow.TimeTablesRepo.Edit(timeTableData);
+            _scheduleUow.TimeTablesRepo.Edit<TimeTable>(timeTableData);
             _scheduleUow.Save();
         }
 

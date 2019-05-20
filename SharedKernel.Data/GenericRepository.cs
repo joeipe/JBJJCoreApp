@@ -8,7 +8,7 @@ using System.Linq.Expressions;
 
 namespace SharedKernel.Data
 {
-    public class GenericRepository<TEntity> where TEntity : class, IEntity//, IClientChangeTracker
+    public class GenericRepository<TEntity> where TEntity : class, IEntity
     {
         protected DbContext _dataContext;
         protected DbSet<TEntity> _dataTable;
@@ -24,12 +24,12 @@ namespace SharedKernel.Data
             _dataContext.ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.NoTracking;
         }
 
-        public virtual void Add(params TEntity[] items)
+        public virtual void Add<TItem>(params TEntity[] items) where TItem : TEntity, IClientChangeTracker
         {
-            Edit(items);
+            Edit<TItem>(items);
         }
 
-        public virtual void Edit(params TEntity[] items)
+        public virtual void Edit<TItem>(params TEntity[] items) where TItem : TEntity, IClientChangeTracker
         {
             foreach (TEntity item in items)
             {

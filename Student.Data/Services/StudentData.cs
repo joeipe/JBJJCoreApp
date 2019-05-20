@@ -34,14 +34,14 @@ namespace Student.Data.Services
         public void AddGrade(GradeViewModel value)
         {
             var gradeData = ObjectMapper.Mapper.Map<Grade>(value);
-            _studentUow.GradesRepo.Add(gradeData);
+            _studentUow.GradesRepo.Add<Grade>(gradeData);
             _studentUow.Save();
         }
 
         public void UpdateGrade(GradeViewModel value)
         {
             var gradeData = ObjectMapper.Mapper.Map<Grade>(value);
-            _studentUow.GradesRepo.Edit(gradeData);
+            _studentUow.GradesRepo.Edit<Grade>(gradeData);
             _studentUow.Save();
         }
 
@@ -84,14 +84,14 @@ namespace Student.Data.Services
         public void AddPerson(PersonViewModel value)
         {
             var personData = ObjectMapper.Mapper.Map<Person>(value);
-            _studentUow.PeopleRepo.Add(personData);
+            _studentUow.PeopleRepo.Add<Person>(personData);
             _studentUow.Save();
         }
 
         public void UpdatePerson(PersonViewModel value)
         {
             var personData = ObjectMapper.Mapper.Map<Person>(value);
-            _studentUow.PeopleRepo.Edit(personData);
+            _studentUow.PeopleRepo.Edit<Person>(personData);
             _studentUow.Save();
         }
 

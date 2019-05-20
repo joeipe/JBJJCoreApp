@@ -34,14 +34,14 @@ namespace DayAtDojo.Data.Services
         public void AddOutcome(OutcomeViewModel value)
         {
             var outcomeData = ObjectMapper.Mapper.Map<Outcome>(value);
-            _dayAtDojoUow.OutcomesRepo.Add(outcomeData);
+            _dayAtDojoUow.OutcomesRepo.Add<Outcome>(outcomeData);
             _dayAtDojoUow.Save();
         }
 
         public void UpdateOutcome(OutcomeViewModel value)
         {
             var outcomeData = ObjectMapper.Mapper.Map<Outcome>(value);
-            _dayAtDojoUow.OutcomesRepo.Edit(outcomeData);
+            _dayAtDojoUow.OutcomesRepo.Edit<Outcome>(outcomeData);
             _dayAtDojoUow.Save();
         }
 
@@ -83,14 +83,14 @@ namespace DayAtDojo.Data.Services
         public void AddAttendance(AttendanceViewModel value)
         {
             var attendanceData = ObjectMapper.Mapper.Map<Attendance>(value);
-            _dayAtDojoUow.AttendanceRepo.Add(attendanceData);
+            _dayAtDojoUow.AttendanceRepo.Add<Attendance>(attendanceData);
             _dayAtDojoUow.Save();
         }
 
         public void UpdateAttendance(AttendanceViewModel value)
         {
             var attendanceData = ObjectMapper.Mapper.Map<Attendance>(value);
-            _dayAtDojoUow.AttendanceRepo.Edit(attendanceData);
+            _dayAtDojoUow.AttendanceRepo.Edit<Attendance>(attendanceData);
             _dayAtDojoUow.Save();
         }
 
@@ -155,14 +155,14 @@ namespace DayAtDojo.Data.Services
         public void AddSparringDetails(SparringDetailsViewModel value)
         {
             var sparringDetailsData = ObjectMapper.Mapper.Map<SparringDetails>(value);
-            _dayAtDojoUow.SparringDetailsRepo.Add(sparringDetailsData);
+            _dayAtDojoUow.SparringDetailsRepo.Add<SparringDetails>(sparringDetailsData);
             _dayAtDojoUow.Save();
         }
 
         public void UpdateSparringDetails(SparringDetailsViewModel value)
         {
             var sparringDetailsData = ObjectMapper.Mapper.Map<SparringDetails>(value);
-            _dayAtDojoUow.SparringDetailsRepo.Edit(sparringDetailsData);
+            _dayAtDojoUow.SparringDetailsRepo.Edit<SparringDetails>(sparringDetailsData);
             _dayAtDojoUow.Save();
         }
 
