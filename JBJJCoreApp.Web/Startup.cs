@@ -33,29 +33,31 @@ namespace JBJJCoreApp.Web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<ScheduleContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("JBJJCoreDBConnectionString"))
-            );
-            services.AddScoped<ScheduleUow>();
-            services.AddScoped<ScheduleData>();
+            {//dependency injection
+                services.AddDbContext<ScheduleContext>(options =>
+                    options.UseSqlServer(Configuration.GetConnectionString("JBJJCoreDBConnectionString"))
+                );
+                services.AddScoped<ScheduleUow>();
+                services.AddScoped<ScheduleData>();
 
-            services.AddDbContext<StudentContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("JBJJCoreDBConnectionString"))
-            );
-            services.AddScoped<StudentUow>();
-            services.AddScoped<StudentData>();
+                services.AddDbContext<StudentContext>(options =>
+                    options.UseSqlServer(Configuration.GetConnectionString("JBJJCoreDBConnectionString"))
+                );
+                services.AddScoped<StudentUow>();
+                services.AddScoped<StudentData>();
 
-            services.AddDbContext<DayAtDojoContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("JBJJCoreDBConnectionString"))
-            );
-            services.AddDbContext<ReferenceScheduleContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("JBJJCoreDBConnectionString"))
-            );
-            services.AddDbContext<ReferenceStudentContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("JBJJCoreDBConnectionString"))
-            );
-            services.AddScoped<DayAtDojoUow>();
-            services.AddScoped<DayAtDojoData>();
+                services.AddDbContext<DayAtDojoContext>(options =>
+                    options.UseSqlServer(Configuration.GetConnectionString("JBJJCoreDBConnectionString"))
+                );
+                services.AddDbContext<ReferenceScheduleContext>(options =>
+                    options.UseSqlServer(Configuration.GetConnectionString("JBJJCoreDBConnectionString"))
+                );
+                services.AddDbContext<ReferenceStudentContext>(options =>
+                    options.UseSqlServer(Configuration.GetConnectionString("JBJJCoreDBConnectionString"))
+                );
+                services.AddScoped<DayAtDojoUow>();
+                services.AddScoped<DayAtDojoData>();
+            }
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
