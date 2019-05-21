@@ -1,5 +1,4 @@
 ﻿using SharedKernel.Interfaces;
-using System;
 
 namespace SharedKernel
 {

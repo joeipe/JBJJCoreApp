@@ -38,6 +38,7 @@ namespace DayAtDojo.Data.IntegrationTests
         }
 
         #region Outcome
+
         [TestMethod]
         public void Can_GetOutcome()
         {
@@ -83,9 +84,11 @@ namespace DayAtDojo.Data.IntegrationTests
             // Act
             // Assert
         }
-        #endregion
+
+        #endregion Outcome
 
         #region Attendance
+
         [TestMethod]
         public void Can_GetAttendance()
         {
@@ -143,9 +146,11 @@ namespace DayAtDojo.Data.IntegrationTests
             // Act
             // Assert
         }
-        #endregion
+
+        #endregion Attendance
 
         #region SparringDetails
+
         [TestMethod]
         public void Can_GetSparringDetails()
         {
@@ -205,7 +210,8 @@ namespace DayAtDojo.Data.IntegrationTests
             // Act
             // Assert
         }
-        #endregion
+
+        #endregion SparringDetails
 
         private void SeedInMemoryStore()
         {

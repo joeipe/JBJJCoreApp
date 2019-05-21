@@ -1,8 +1,5 @@
 ﻿using DayAtDojo.Domain;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace DayAtDojo.Data
 {
@@ -11,7 +8,6 @@ namespace DayAtDojo.Data
         public ReferenceScheduleContext(DbContextOptions<ReferenceScheduleContext> options)
             : base(options)
         {
-
         }
 
         public DbSet<TimeTableClassAttended> TimeTableClassAttended { get; set; }

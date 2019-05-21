@@ -1,8 +1,4 @@
-﻿using SharedKernel;
-using SharedKernel.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using SharedKernel.Interfaces;
 
 namespace DayAtDojo.Domain
 {

@@ -1,15 +1,13 @@
 ﻿using AutoMapper;
 using DayAtDojo.Domain;
 using JBJJCoreApp.Web.ViewModels;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace DayAtDojo.Data
 {
     public static class ObjectMapper
     {
-        static IMapper _mapper;
+        private static IMapper _mapper;
+
         public static IMapper Mapper
         {
             get
@@ -17,10 +15,12 @@ namespace DayAtDojo.Data
                 return _mapper;
             }
         }
+
         static ObjectMapper()
         {
             CreateMap();
         }
+
         private static void CreateMap()
         {
             var config = new MapperConfiguration(cfg =>

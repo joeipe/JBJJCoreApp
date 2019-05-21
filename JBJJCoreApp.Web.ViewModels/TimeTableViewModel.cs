@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace JBJJCoreApp.Web.ViewModels
+﻿namespace JBJJCoreApp.Web.ViewModels
 {
     public class TimeTableViewModel : VMBase
     {

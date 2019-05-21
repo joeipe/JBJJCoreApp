@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using DayAtDojo.Data.Services;
+﻿using DayAtDojo.Data.Services;
 using JBJJCoreApp.Web.ViewModels;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System;
 
 namespace JBJJCoreApp.Web.Controllers
 {
@@ -21,6 +18,7 @@ namespace JBJJCoreApp.Web.Controllers
         }
 
         #region Outcome
+
         [HttpGet]
         public ActionResult GetOutcome()
         {
@@ -30,7 +28,6 @@ namespace JBJJCoreApp.Web.Controllers
             }
             catch (Exception ex)
             {
-
                 return StatusCode(StatusCodes.Status500InternalServerError, ex);
             }
         }
@@ -115,9 +112,11 @@ namespace JBJJCoreApp.Web.Controllers
                 return StatusCode(StatusCodes.Status500InternalServerError, ex);
             }
         }
-        #endregion
+
+        #endregion Outcome
 
         #region Attendance
+
         [HttpGet]
         public ActionResult GetAttendance()
         {
@@ -127,7 +126,6 @@ namespace JBJJCoreApp.Web.Controllers
             }
             catch (Exception ex)
             {
-
                 return StatusCode(StatusCodes.Status500InternalServerError, ex);
             }
         }
@@ -232,9 +230,11 @@ namespace JBJJCoreApp.Web.Controllers
                 return StatusCode(StatusCodes.Status500InternalServerError, ex);
             }
         }
-        #endregion
+
+        #endregion Attendance
 
         #region SparringDetails
+
         [HttpGet]
         public ActionResult GetSparringDetails()
         {
@@ -244,7 +244,6 @@ namespace JBJJCoreApp.Web.Controllers
             }
             catch (Exception ex)
             {
-
                 return StatusCode(StatusCodes.Status500InternalServerError, ex);
             }
         }
@@ -258,7 +257,6 @@ namespace JBJJCoreApp.Web.Controllers
             }
             catch (Exception ex)
             {
-
                 return StatusCode(StatusCodes.Status500InternalServerError, ex);
             }
         }
@@ -363,6 +361,7 @@ namespace JBJJCoreApp.Web.Controllers
                 return StatusCode(StatusCodes.Status500InternalServerError, ex);
             }
         }
-        #endregion
+
+        #endregion SparringDetails
     }
 }

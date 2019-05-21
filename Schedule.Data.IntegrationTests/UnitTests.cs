@@ -1,10 +1,8 @@
-using JBJJCoreApp.Web.ViewModels;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Schedule.Data.Services;
 using Schedule.Domain;
 using Schedule.Domain.Enums;
-using SharedKernel.Data;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -32,6 +30,7 @@ namespace Schedule.Data.IntegrationTests
         }
 
         #region ClassType
+
         [TestMethod]
         public void Can_GetClassType()
         {
@@ -77,9 +76,11 @@ namespace Schedule.Data.IntegrationTests
             // Act
             // Assert
         }
-        #endregion
+
+        #endregion ClassType
 
         #region TimeTable
+
         [TestMethod]
         public void Can_GetTimeTable()
         {
@@ -137,7 +138,8 @@ namespace Schedule.Data.IntegrationTests
             // Act
             // Assert
         }
-        #endregion
+
+        #endregion TimeTable
 
         private void SeedInMemoryStore()
         {

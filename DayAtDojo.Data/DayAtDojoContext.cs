@@ -8,9 +8,8 @@ namespace DayAtDojo.Data
     public class DayAtDojoContext : DbContext
     {
         public DayAtDojoContext(DbContextOptions<DayAtDojoContext> options)
-            :base(options)
+            : base(options)
         {
-
         }
 
         public DbSet<Outcome> Outcomes { get; set; }

@@ -1,9 +1,6 @@
 ﻿using DayAtDojo.Domain;
 using SharedKernel.Data;
 using SharedKernel.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace DayAtDojo.Data
 {
@@ -12,6 +9,7 @@ namespace DayAtDojo.Data
         private DayAtDojoContext _dayAtDojoContext;
         private ReferenceScheduleContext _referenceScheduleContext;
         private ReferenceStudentContext _referenceStudentContext;
+
         public DayAtDojoUow(DayAtDojoContext dayAtDojoContext, ReferenceScheduleContext referenceScheduleContext, ReferenceStudentContext referenceStudentContext)
         {
             _dayAtDojoContext = dayAtDojoContext;

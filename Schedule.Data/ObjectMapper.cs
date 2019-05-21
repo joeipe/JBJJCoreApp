@@ -3,14 +3,13 @@ using JBJJCoreApp.Web.ViewModels;
 using Schedule.Domain;
 using Schedule.Domain.Enums;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Schedule.Data
 {
     public static class ObjectMapper
     {
-        static IMapper _mapper;
+        private static IMapper _mapper;
+
         public static IMapper Mapper
         {
             get
@@ -18,10 +17,12 @@ namespace Schedule.Data
                 return _mapper;
             }
         }
+
         static ObjectMapper()
         {
             CreateMap();
         }
+
         private static void CreateMap()
         {
             var config = new MapperConfiguration(cfg =>

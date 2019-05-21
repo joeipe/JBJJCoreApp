@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using JBJJCoreApp.Web.ViewModels;
+﻿using JBJJCoreApp.Web.ViewModels;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Schedule.Data.Services;
+using System;
 
 namespace JBJJCoreApp.Web.Controllers
 {
@@ -14,12 +11,14 @@ namespace JBJJCoreApp.Web.Controllers
     public class ScheduleController : ControllerBase
     {
         private ScheduleData _scheduleData;
+
         public ScheduleController(ScheduleData scheduleData)
         {
             _scheduleData = scheduleData;
         }
 
         #region ClassType
+
         [HttpGet]
         public ActionResult GetClassType()
         {
@@ -113,9 +112,11 @@ namespace JBJJCoreApp.Web.Controllers
                 return StatusCode(StatusCodes.Status500InternalServerError, ex);
             }
         }
-        #endregion
+
+        #endregion ClassType
 
         #region TimeTable
+
         [HttpGet]
         public ActionResult GetTimeTable()
         {
@@ -229,6 +230,7 @@ namespace JBJJCoreApp.Web.Controllers
                 return StatusCode(StatusCodes.Status500InternalServerError, ex);
             }
         }
-        #endregion
+
+        #endregion TimeTable
     }
 }

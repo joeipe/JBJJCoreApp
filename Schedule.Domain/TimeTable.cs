@@ -1,8 +1,5 @@
 ﻿using Schedule.Domain.Enums;
 using SharedKernel;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Schedule.Domain
 {

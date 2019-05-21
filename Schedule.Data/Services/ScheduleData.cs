@@ -1,11 +1,7 @@
 ﻿using JBJJCoreApp.Web.ViewModels;
-using Microsoft.EntityFrameworkCore;
 using Schedule.Domain;
-using SharedKernel.Data;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace Schedule.Data.Services
 {
@@ -19,6 +15,7 @@ namespace Schedule.Data.Services
         }
 
         #region ClassType
+
         public IList<ClassTypeViewModel> GetClassType()
         {
             var classTypesData = _scheduleUow.ClassTypesRepo.GetAll();
@@ -53,9 +50,11 @@ namespace Schedule.Data.Services
             _scheduleUow.ClassTypesRepo.Delete(classTypeData);
             _scheduleUow.Save();
         }
-        #endregion
+
+        #endregion ClassType
 
         #region TimeTable
+
         public IList<TimeTableViewModel> GetTimeTable()
         {
             var timeTablesData = _scheduleUow.TimeTablesRepo.GetAll();
@@ -104,6 +103,7 @@ namespace Schedule.Data.Services
             _scheduleUow.TimeTablesRepo.Delete(timeTableData);
             _scheduleUow.Save();
         }
-        #endregion
+
+        #endregion TimeTable
     }
 }

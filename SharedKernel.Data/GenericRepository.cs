@@ -1,5 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.ChangeTracking;
 using SharedKernel.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -12,6 +11,7 @@ namespace SharedKernel.Data
     {
         protected DbContext _dataContext;
         protected DbSet<TEntity> _dataTable;
+
         public GenericRepository(DbContext dataContext)
         {
             if (dataContext == null)
@@ -36,6 +36,7 @@ namespace SharedKernel.Data
                 _dataContext.FixState(item);
             }
         }
+
         public virtual void Delete(params TEntity[] items)
         {
             foreach (TEntity item in items)

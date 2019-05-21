@@ -1,9 +1,7 @@
 ﻿using JBJJCoreApp.Web.ViewModels;
 using Student.Domain;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace Student.Data.Services
 {
@@ -17,6 +15,7 @@ namespace Student.Data.Services
         }
 
         #region Grade
+
         public IList<GradeViewModel> GetGrade()
         {
             var gradesData = _studentUow.GradesRepo.GetAll();
@@ -51,9 +50,11 @@ namespace Student.Data.Services
             _studentUow.GradesRepo.Delete(gradeData);
             _studentUow.Save();
         }
-        #endregion
+
+        #endregion Grade
 
         #region Person
+
         public IList<PersonViewModel> GetPerson()
         {
             var personsData = _studentUow.PeopleRepo.GetAll();
@@ -101,6 +102,7 @@ namespace Student.Data.Services
             _studentUow.PeopleRepo.Delete(personData);
             _studentUow.Save();
         }
-        #endregion
+
+        #endregion Person
     }
 }

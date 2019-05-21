@@ -1,9 +1,7 @@
 ﻿using DayAtDojo.Domain;
 using JBJJCoreApp.Web.ViewModels;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace DayAtDojo.Data.Services
 {
@@ -17,6 +15,7 @@ namespace DayAtDojo.Data.Services
         }
 
         #region Outcome
+
         public IList<OutcomeViewModel> GetOutcome()
         {
             var outcomesData = _dayAtDojoUow.OutcomesRepo.GetAll();
@@ -51,9 +50,11 @@ namespace DayAtDojo.Data.Services
             _dayAtDojoUow.OutcomesRepo.Delete(outcomeData);
             _dayAtDojoUow.Save();
         }
-        #endregion
+
+        #endregion Outcome
 
         #region Attendance
+
         public IList<AttendanceViewModel> GetAttendance()
         {
             var attendancesData = _dayAtDojoUow.AttendanceRepo.GetAll();
@@ -100,9 +101,11 @@ namespace DayAtDojo.Data.Services
             _dayAtDojoUow.AttendanceRepo.Delete(attendanceData);
             _dayAtDojoUow.Save();
         }
-        #endregion
+
+        #endregion Attendance
 
         #region SparringDetails
+
         public IList<SparringDetailsViewModel> GetSparringDetails()
         {
             var sparringDetailssData = _dayAtDojoUow.SparringDetailsRepo.GetAll();
@@ -172,6 +175,7 @@ namespace DayAtDojo.Data.Services
             _dayAtDojoUow.SparringDetailsRepo.Delete(sparringDetailsData);
             _dayAtDojoUow.Save();
         }
-        #endregion
+
+        #endregion SparringDetails
     }
 }

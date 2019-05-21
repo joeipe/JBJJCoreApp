@@ -1,15 +1,13 @@
 ﻿using AutoMapper;
 using JBJJCoreApp.Web.ViewModels;
 using Student.Domain;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Student.Data
 {
     public static class ObjectMapper
     {
-        static IMapper _mapper;
+        private static IMapper _mapper;
+
         public static IMapper Mapper
         {
             get
@@ -17,10 +15,12 @@ namespace Student.Data
                 return _mapper;
             }
         }
+
         static ObjectMapper()
         {
             CreateMap();
         }
+
         private static void CreateMap()
         {
             var config = new MapperConfiguration(cfg =>

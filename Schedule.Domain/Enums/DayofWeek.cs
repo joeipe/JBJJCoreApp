@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Schedule.Domain.Enums
+﻿namespace Schedule.Domain.Enums
 {
     public enum DayofWeek
     {

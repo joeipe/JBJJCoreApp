@@ -1,6 +1,5 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Schedule.Data;
 using Student.Data.Services;
 using Student.Domain;
 using System.Collections.Generic;
@@ -27,6 +26,7 @@ namespace Student.Data.IntegrationTests
         }
 
         #region Grade
+
         [TestMethod]
         public void Can_GetGrade()
         {
@@ -72,9 +72,11 @@ namespace Student.Data.IntegrationTests
             // Act
             // Assert
         }
-        #endregion
+
+        #endregion Grade
 
         #region Person
+
         [TestMethod]
         public void Can_GetPerson()
         {
@@ -132,7 +134,8 @@ namespace Student.Data.IntegrationTests
             // Act
             // Assert
         }
-        #endregion
+
+        #endregion Person
 
         private void SeedInMemoryStore()
         {

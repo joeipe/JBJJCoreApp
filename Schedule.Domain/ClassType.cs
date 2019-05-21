@@ -1,5 +1,4 @@
 ﻿using SharedKernel;
-using System;
 using System.Collections.Generic;
 
 namespace Schedule.Domain

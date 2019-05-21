@@ -10,7 +10,6 @@ namespace Student.Data
         public StudentContext(DbContextOptions<StudentContext> options)
             : base(options)
         {
-
         }
 
         public DbSet<Grade> Grades { get; set; }
@@ -53,4 +52,3 @@ namespace Student.Data
         }
     }
 }
-

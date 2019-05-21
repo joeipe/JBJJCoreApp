@@ -1,10 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Schedule.Domain;
-using Schedule.Domain.Enums;
-using SharedKernel;
-using SharedKernel.Interfaces;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 
 namespace Schedule.Data
@@ -12,10 +8,10 @@ namespace Schedule.Data
     public class ScheduleContext : DbContext
     {
         public ScheduleContext(DbContextOptions<ScheduleContext> options)
-            :base(options)
+            : base(options)
         {
-
         }
+
         public DbSet<ClassType> ClassTypes { get; set; }
         public DbSet<TimeTable> TimeTables { get; set; }
 

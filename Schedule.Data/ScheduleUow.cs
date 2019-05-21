@@ -1,16 +1,13 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Schedule.Domain;
+﻿using Schedule.Domain;
 using SharedKernel.Data;
 using SharedKernel.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Schedule.Data
 {
     public class ScheduleUow : IUow
     {
         private ScheduleContext _scheduleContext;
+
         public ScheduleUow(ScheduleContext scheduleContext)
         {
             _scheduleContext = scheduleContext;

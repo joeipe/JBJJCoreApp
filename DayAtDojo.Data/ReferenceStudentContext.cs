@@ -1,8 +1,5 @@
 ﻿using DayAtDojo.Domain;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace DayAtDojo.Data
 {
@@ -11,7 +8,6 @@ namespace DayAtDojo.Data
         public ReferenceStudentContext(DbContextOptions<ReferenceStudentContext> options)
             : base(options)
         {
-
         }
 
         public DbSet<PersonSparringPartner> PersonSparringPartners { get; set; }

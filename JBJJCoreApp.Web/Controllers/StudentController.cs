@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using JBJJCoreApp.Web.ViewModels;
+﻿using JBJJCoreApp.Web.ViewModels;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Student.Data.Services;
+using System;
 
 namespace JBJJCoreApp.Web.Controllers
 {
@@ -14,12 +11,14 @@ namespace JBJJCoreApp.Web.Controllers
     public class StudentController : ControllerBase
     {
         private StudentData _studentData;
+
         public StudentController(StudentData studentData)
         {
             _studentData = studentData;
         }
 
         #region Grade
+
         [HttpGet]
         public ActionResult GetGrade()
         {
@@ -29,7 +28,6 @@ namespace JBJJCoreApp.Web.Controllers
             }
             catch (Exception ex)
             {
-
                 return StatusCode(StatusCodes.Status500InternalServerError, ex);
             }
         }
@@ -114,9 +112,11 @@ namespace JBJJCoreApp.Web.Controllers
                 return StatusCode(StatusCodes.Status500InternalServerError, ex);
             }
         }
-        #endregion
+
+        #endregion Grade
 
         #region Person
+
         [HttpGet]
         public ActionResult GetPerson()
         {
@@ -230,6 +230,7 @@ namespace JBJJCoreApp.Web.Controllers
                 return StatusCode(StatusCodes.Status500InternalServerError, ex);
             }
         }
-        #endregion
+
+        #endregion Person
     }
 }
