@@ -49,11 +49,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{8DB69D
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{2800DE44-75F5-4892-9D00-BACBFA659E08}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DayAtDojo.Domain", "DayAtDojo.Domain\DayAtDojo.Domain.csproj", "{FE6708B4-4BE4-45DE-B20C-E24371DF488F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DayAtDojo.Domain", "DayAtDojo.Domain\DayAtDojo.Domain.csproj", "{FE6708B4-4BE4-45DE-B20C-E24371DF488F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DayAtDojo.Data", "DayAtDojo.Data\DayAtDojo.Data.csproj", "{47060F9F-3E54-409D-BFDF-6643A3FFE455}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DayAtDojo.Data", "DayAtDojo.Data\DayAtDojo.Data.csproj", "{47060F9F-3E54-409D-BFDF-6643A3FFE455}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DayAtDojo.Data.IntegrationTests", "DayAtDojo.Data.IntegrationTests\DayAtDojo.Data.IntegrationTests.csproj", "{6288C317-799B-405C-B810-62BDC44E446F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DayAtDojo.Data.IntegrationTests", "DayAtDojo.Data.IntegrationTests\DayAtDojo.Data.IntegrationTests.csproj", "{6288C317-799B-405C-B810-62BDC44E446F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
