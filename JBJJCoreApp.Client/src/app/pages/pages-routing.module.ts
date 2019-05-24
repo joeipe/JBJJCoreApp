@@ -5,16 +5,29 @@ import { PagesComponent } from './pages.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ECommerceComponent } from './e-commerce/e-commerce.component';
 import { NotFoundComponent } from './miscellaneous/not-found/not-found.component';
+import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [{
   path: '',
   component: PagesComponent,
   children: [{
+    path: 'home',
+    component: HomeComponent,
+  }, {
     path: 'dashboard',
     component: ECommerceComponent,
   }, {
     path: 'iot-dashboard',
     component: DashboardComponent,
+  }, {
+    path: 'schedule',
+    loadChildren: './schedule/schedule.module#ScheduleModule',
+  }, {
+    path: 'student',
+    loadChildren: './student/student.module#StudentModule',
+  }, {
+    path: 'dayatdojo',
+    loadChildren: './day-at-dojo/day-at-dojo.module#DayAtDojoModule',
   }, {
     path: 'ui-features',
     loadChildren: './ui-features/ui-features.module#UiFeaturesModule',

@@ -2,19 +2,74 @@ import { NbMenuItem } from '@nebular/theme';
 
 export const MENU_ITEMS: NbMenuItem[] = [
   {
+    title: 'JBJJ-Home',
+    icon: 'nb-home',
+    link: '/pages/home',
+    home: true,
+  },
+  {
+    title: 'FEATURES',
+    group: true,
+  },
+  {
+    title: 'Schedule',
+    icon: 'nb-gear',
+    children: [
+      {
+        title: 'Class Types',
+        link: '/pages/schedule/classtypes',
+      },
+      {
+        title: 'Time Table',
+        link: '/pages/schedule/timetable',
+      },
+    ],
+  },
+  {
+    title: 'Student',
+    icon: 'nb-gear',
+    children: [
+      {
+        title: 'Grade',
+        link: '/pages/student/grade',
+      },
+      {
+        title: 'People',
+        link: '/pages/student/people',
+      },
+    ],
+  },
+  {
+    title: 'Day At Dojo',
+    icon: 'nb-gear',
+    children: [
+      {
+        title: 'Outcome',
+        link: '/pages/dayatdojo/outcome',
+      },
+      {
+        title: 'Attendance',
+        link: '/pages/dayatdojo/attendance',
+      },
+      {
+        title: 'Sparring Details',
+        link: '/pages/dayatdojo/sparringdetails',
+      },
+    ],
+  },
+  {
+    title: 'TEMPLATES',
+    group: true,
+  },
+  {
     title: 'E-commerce',
     icon: 'nb-e-commerce',
     link: '/pages/dashboard',
-    home: true,
   },
   {
     title: 'IoT Dashboard',
     icon: 'nb-home',
     link: '/pages/iot-dashboard',
-  },
-  {
-    title: 'FEATURES',
-    group: true,
   },
   {
     title: 'Extra Components',
