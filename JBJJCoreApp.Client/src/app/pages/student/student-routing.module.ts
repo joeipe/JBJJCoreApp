@@ -26,5 +26,5 @@ export class StudentRoutingModule { }
 export const routedComponents = [
   StudentComponent,
   GradeComponent,
-  PeopleComponent
+  PeopleComponent,
 ];

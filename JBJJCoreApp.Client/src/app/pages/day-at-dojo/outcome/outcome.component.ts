@@ -5,7 +5,7 @@ import { SmartTableData } from '../../../@core/data/smart-table';
 @Component({
   selector: 'ngx-outcome',
   templateUrl: './outcome.component.html',
-  styleUrls: ['./outcome.component.scss']
+  styleUrls: ['./outcome.component.scss'],
 })
 export class OutcomeComponent implements OnInit {
   settings = {

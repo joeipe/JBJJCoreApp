@@ -5,7 +5,7 @@ import { SmartTableData } from '../../../@core/data/smart-table';
 @Component({
   selector: 'ngx-grade',
   templateUrl: './grade.component.html',
-  styleUrls: ['./grade.component.scss']
+  styleUrls: ['./grade.component.scss'],
 })
 export class GradeComponent implements OnInit {
   settings = {

@@ -18,7 +18,7 @@ import { SparringDetailsComponent } from './sparring-details/sparring-details.co
     ...routedComponents,
     OutcomeComponent,
     AttendanceComponent,
-    SparringDetailsComponent
+    SparringDetailsComponent,
   ],
 })
 export class DayAtDojoModule { }

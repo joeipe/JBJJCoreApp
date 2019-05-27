@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { LocalDataSource } from 'ng2-smart-table';
-import { SmartTableData } from '../../../@core/data/smart-table';
+// import { SmartTableData } from '../../../@core/data/smart-table';
 
 @Component({
   selector: 'ngx-time-table',
   templateUrl: './time-table.component.html',
-  styleUrls: ['./time-table.component.scss']
+  styleUrls: ['./time-table.component.scss'],
 })
 export class TimeTableComponent implements OnInit {
   settings = {
@@ -48,108 +48,108 @@ export class TimeTableComponent implements OnInit {
   };
   source: LocalDataSource = new LocalDataSource();
 
-  constructor(private service: SmartTableData) {
-    //const data = this.service.getData();
+  constructor() { // private service: SmartTableData
+    // const data = this.service.getData();
     const data = [
       {
-        "dayofWeek": "Monday",
-        "startTimeHr": 6,
-        "startTimeMin": 45,
-        "endTimeHr": 7,
-        "endTimeMin": 45,
-        "classTypeId": 1,
-        "classType": null,
-        "id": 1,
-        "isDirty": false
+        'dayofWeek': 'Monday',
+        'startTimeHr': 6,
+        'startTimeMin': 45,
+        'endTimeHr': 7,
+        'endTimeMin': 45,
+        'classTypeId': 1,
+        'classType': null,
+        'id': 1,
+        'isDirty': false,
       },
       {
-        "dayofWeek": "Monday",
-        "startTimeHr": 18,
-        "startTimeMin": 30,
-        "endTimeHr": 19,
-        "endTimeMin": 30,
-        "classTypeId": 4,
-        "classType": null,
-        "id": 2,
-        "isDirty": false
+        'dayofWeek': 'Monday',
+        'startTimeHr': 18,
+        'startTimeMin': 30,
+        'endTimeHr': 19,
+        'endTimeMin': 30,
+        'classTypeId': 4,
+        'classType': null,
+        'id': 2,
+        'isDirty': false,
       },
       {
-        "dayofWeek": "Monday",
-        "startTimeHr": 19,
-        "startTimeMin": 30,
-        "endTimeHr": 20,
-        "endTimeMin": 30,
-        "classTypeId": 5,
-        "classType": null,
-        "id": 3,
-        "isDirty": false
+        'dayofWeek': 'Monday',
+        'startTimeHr': 19,
+        'startTimeMin': 30,
+        'endTimeHr': 20,
+        'endTimeMin': 30,
+        'classTypeId': 5,
+        'classType': null,
+        'id': 3,
+        'isDirty': false,
       },
       {
-        "dayofWeek": "Tuesday",
-        "startTimeHr": 18,
-        "startTimeMin": 30,
-        "endTimeHr": 19,
-        "endTimeMin": 30,
-        "classTypeId": 2,
-        "classType": null,
-        "id": 4,
-        "isDirty": false
+        'dayofWeek': 'Tuesday',
+        'startTimeHr': 18,
+        'startTimeMin': 30,
+        'endTimeHr': 19,
+        'endTimeMin': 30,
+        'classTypeId': 2,
+        'classType': null,
+        'id': 4,
+        'isDirty': false,
       },
       {
-        "dayofWeek": "Tuesday",
-        "startTimeHr": 19,
-        "startTimeMin": 30,
-        "endTimeHr": 20,
-        "endTimeMin": 30,
-        "classTypeId": 6,
-        "classType": null,
-        "id": 5,
-        "isDirty": false
+        'dayofWeek': 'Tuesday',
+        'startTimeHr': 19,
+        'startTimeMin': 30,
+        'endTimeHr': 20,
+        'endTimeMin': 30,
+        'classTypeId': 6,
+        'classType': null,
+        'id': 5,
+        'isDirty': false,
       },
       {
-        "dayofWeek": "Wednesday",
-        "startTimeHr": 18,
-        "startTimeMin": 30,
-        "endTimeHr": 19,
-        "endTimeMin": 30,
-        "classTypeId": 4,
-        "classType": null,
-        "id": 6,
-        "isDirty": false
+        'dayofWeek': 'Wednesday',
+        'startTimeHr': 18,
+        'startTimeMin': 30,
+        'endTimeHr': 19,
+        'endTimeMin': 30,
+        'classTypeId': 4,
+        'classType': null,
+        'id': 6,
+        'isDirty': false,
       },
       {
-        "dayofWeek": "Wednesday",
-        "startTimeHr": 19,
-        "startTimeMin": 30,
-        "endTimeHr": 20,
-        "endTimeMin": 30,
-        "classTypeId": 1,
-        "classType": null,
-        "id": 7,
-        "isDirty": false
+        'dayofWeek': 'Wednesday',
+        'startTimeHr': 19,
+        'startTimeMin': 30,
+        'endTimeHr': 20,
+        'endTimeMin': 30,
+        'classTypeId': 1,
+        'classType': null,
+        'id': 7,
+        'isDirty': false,
       },
       {
-        "dayofWeek": "Thursday",
-        "startTimeHr": 18,
-        "startTimeMin": 30,
-        "endTimeHr": 19,
-        "endTimeMin": 30,
-        "classTypeId": 1,
-        "classType": null,
-        "id": 8,
-        "isDirty": false
+        'dayofWeek': 'Thursday',
+        'startTimeHr': 18,
+        'startTimeMin': 30,
+        'endTimeHr': 19,
+        'endTimeMin': 30,
+        'classTypeId': 1,
+        'classType': null,
+        'id': 8,
+        'isDirty': false,
       },
       {
-        "dayofWeek": "Thursday",
-        "startTimeHr": 19,
-        "startTimeMin": 30,
-        "endTimeHr": 20,
-        "endTimeMin": 30,
-        "classTypeId": 3,
-        "classType": null,
-        "id": 9,
-        "isDirty": false
-      }
+        'dayofWeek': 'Thursday',
+        'startTimeHr': 19,
+        'startTimeMin': 30,
+        'endTimeHr': 20,
+        'endTimeMin': 30,
+        'classTypeId': 3,
+        'classType': null,
+        'id': 9,
+        'isDirty': false,
+      },
     ];
     this.source.load(data);
   }

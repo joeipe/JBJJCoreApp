@@ -8,7 +8,7 @@ describe('TimeTableComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TimeTableComponent ]
+      declarations: [ TimeTableComponent ],
     })
     .compileComponents();
   }));

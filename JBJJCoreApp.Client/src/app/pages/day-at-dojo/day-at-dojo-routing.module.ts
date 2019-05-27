@@ -31,5 +31,5 @@ export const routedComponents = [
     DayAtDojoComponent,
     OutcomeComponent,
     AttendanceComponent,
-    SparringDetailsComponent
+    SparringDetailsComponent,
 ];

@@ -26,5 +26,5 @@ export class ScheduleRoutingModule { }
 export const routedComponents = [
   ScheduleComponent,
   TimeTableComponent,
-  ClassTypesComponent
+  ClassTypesComponent,
 ];

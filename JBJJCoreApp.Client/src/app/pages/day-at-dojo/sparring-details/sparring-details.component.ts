@@ -5,7 +5,7 @@ import { SmartTableData } from '../../../@core/data/smart-table';
 @Component({
   selector: 'ngx-sparring-details',
   templateUrl: './sparring-details.component.html',
-  styleUrls: ['./sparring-details.component.scss']
+  styleUrls: ['./sparring-details.component.scss'],
 })
 export class SparringDetailsComponent implements OnInit {
   settings = {

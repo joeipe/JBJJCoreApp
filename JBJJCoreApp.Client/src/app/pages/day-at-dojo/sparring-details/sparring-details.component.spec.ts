@@ -8,7 +8,7 @@ describe('SparringDetailsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SparringDetailsComponent ]
+      declarations: [ SparringDetailsComponent ],
     })
     .compileComponents();
   }));

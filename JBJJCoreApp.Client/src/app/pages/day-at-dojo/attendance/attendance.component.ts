@@ -5,7 +5,7 @@ import { SmartTableData } from '../../../@core/data/smart-table';
 @Component({
   selector: 'ngx-attendance',
   templateUrl: './attendance.component.html',
-  styleUrls: ['./attendance.component.scss']
+  styleUrls: ['./attendance.component.scss'],
 })
 export class AttendanceComponent implements OnInit {
   settings = {

@@ -5,7 +5,7 @@ import { SmartTableData } from '../../../@core/data/smart-table';
 @Component({
   selector: 'ngx-people',
   templateUrl: './people.component.html',
-  styleUrls: ['./people.component.scss']
+  styleUrls: ['./people.component.scss'],
 })
 export class PeopleComponent implements OnInit {
   settings = {
