@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LocalDataSource } from 'ng2-smart-table';
+import { ScheduleService } from '../../../@core/http/schedule.service';
 
 @Component({
   selector: 'ngx-class-types',
@@ -12,11 +13,13 @@ export class ClassTypesComponent implements OnInit {
       addButtonContent: '<i class="nb-plus"></i>',
       createButtonContent: '<i class="nb-checkmark"></i>',
       cancelButtonContent: '<i class="nb-close"></i>',
+      confirmCreate: true,
     },
     edit: {
       editButtonContent: '<i class="nb-edit"></i>',
       saveButtonContent: '<i class="nb-checkmark"></i>',
       cancelButtonContent: '<i class="nb-close"></i>',
+      confirmSave: true,
     },
     delete: {
       deleteButtonContent: '<i class="nb-trash"></i>',
@@ -31,54 +34,32 @@ export class ClassTypesComponent implements OnInit {
   };
   source: LocalDataSource = new LocalDataSource();
 
-  constructor() { // private service: SmartTableData
-    // const data = this.service.getData();
-    const data = [
-      {
-        'name': 'BJJ Gi All Levels',
-        'id': 1,
-        'isDirty': false,
-      },
-      {
-        'name': 'BJJ Gi Fundamenals',
-        'id': 2,
-        'isDirty': false,
-      },
-      {
-        'name': 'BJJ No Gi All Levels',
-        'id': 3,
-        'isDirty': false,
-      },
-      {
-        'name': 'BJJ Gi Biginners',
-        'id': 4,
-        'isDirty': false,
-      },
-      {
-        'name': 'BJJ Advanced Class',
-        'id': 5,
-        'isDirty': false,
-      },
-      {
-        'name': 'BJJ Competition Class',
-        'id': 6,
-        'isDirty': false,
-      },
-      {
-        'name': 'test1',
-        'id': 7,
-        'isDirty': false,
-      },
-    ];
-    this.source.load(data);
-  }
+  constructor(private scheduleService: ScheduleService) {}
 
   ngOnInit() {
+    this.scheduleService.getClassType().subscribe((data)=>{
+      this.source.load(data);
+    });
+  }
+
+  onCreateConfirm(event): void {
+    this.scheduleService.AddClassType(event.newData).subscribe(()=>{
+      event.confirm.resolve();
+    });
+  }
+
+  onEditConfirm(event): void {
+    event.newData.isDirty = true;
+    this.scheduleService.UpdateClassType(event.newData).subscribe(()=>{
+      event.confirm.resolve();
+    });
   }
 
   onDeleteConfirm(event): void {
     if (window.confirm('Are you sure you want to delete?')) {
-      event.confirm.resolve();
+      this.scheduleService.DeleteClassType(event.data.id).subscribe(()=>{
+        event.confirm.resolve();
+      });
     } else {
       event.confirm.reject();
     }

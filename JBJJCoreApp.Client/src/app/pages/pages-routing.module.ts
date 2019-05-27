@@ -14,12 +14,6 @@ const routes: Routes = [{
     path: 'home',
     component: HomeComponent,
   }, {
-    path: 'dashboard',
-    component: ECommerceComponent,
-  }, {
-    path: 'iot-dashboard',
-    component: DashboardComponent,
-  }, {
     path: 'schedule',
     loadChildren: './schedule/schedule.module#ScheduleModule',
   }, {
@@ -28,6 +22,18 @@ const routes: Routes = [{
   }, {
     path: 'dayatdojo',
     loadChildren: './day-at-dojo/day-at-dojo.module#DayAtDojoModule',
+  }, {
+    path: 'dashboard',
+    component: ECommerceComponent,
+  }, {
+    path: 'iot-dashboard',
+    component: DashboardComponent,
+  }, {
+    path: 'dashboard',
+    component: ECommerceComponent,
+  }, {
+    path: 'iot-dashboard',
+    component: DashboardComponent,
   }, {
     path: 'ui-features',
     loadChildren: './ui-features/ui-features.module#UiFeaturesModule',
@@ -60,7 +66,7 @@ const routes: Routes = [{
     loadChildren: './miscellaneous/miscellaneous.module#MiscellaneousModule',
   }, {
     path: '',
-    redirectTo: 'dashboard',
+    redirectTo: 'home',
     pathMatch: 'full',
   }, {
     path: '**',

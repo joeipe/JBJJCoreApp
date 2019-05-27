@@ -13,7 +13,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
   },
   {
     title: 'Schedule',
-    icon: 'nb-gear',
+    icon: 'nb-tables',
     children: [
       {
         title: 'Class Types',
@@ -27,7 +27,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
   },
   {
     title: 'Student',
-    icon: 'nb-gear',
+    icon: 'nb-person',
     children: [
       {
         title: 'Grade',
@@ -41,7 +41,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
   },
   {
     title: 'Day At Dojo',
-    icon: 'nb-gear',
+    icon: 'nb-heart',
     children: [
       {
         title: 'Outcome',
@@ -58,7 +58,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
     ],
   },
   {
-    title: 'TEMPLATES',
+    title: 'UI TEMPLATES',
     group: true,
   },
   {

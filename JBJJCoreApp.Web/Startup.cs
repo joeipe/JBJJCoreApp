@@ -21,6 +21,7 @@ namespace JBJJCoreApp.Web
             Configuration = configuration;
         }
 
+        readonly string _corsPolicy = "CorsPolicy";
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
@@ -52,6 +53,15 @@ namespace JBJJCoreApp.Web
                 services.AddScoped<DayAtDojoData>();
             }
 
+            services.AddCors(options =>
+            {
+                options.AddPolicy(_corsPolicy,
+                    builder => builder.AllowAnyOrigin()
+                    .AllowAnyMethod()
+                    .AllowAnyHeader()
+                    .AllowCredentials());
+            });
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
             // Register the Swagger generator, defining 1 or more Swagger documents
@@ -72,6 +82,8 @@ namespace JBJJCoreApp.Web
             {
                 app.UseHsts();
             }
+
+            app.UseCors(_corsPolicy);
 
             app.UseHttpsRedirection();
             app.UseMvc();
