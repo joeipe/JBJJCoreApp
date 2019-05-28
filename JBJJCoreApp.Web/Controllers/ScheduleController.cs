@@ -130,6 +130,19 @@ namespace JBJJCoreApp.Web.Controllers
             }
         }
 
+        [HttpGet]
+        public ActionResult GetTimeTableWithGraph()
+        {
+            try
+            {
+                return Ok(_scheduleData.GetTimeTableWithGraph());
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, ex);
+            }
+        }
+
         [HttpGet("{id}")]
         public ActionResult GetTimeTableById(int id)
         {

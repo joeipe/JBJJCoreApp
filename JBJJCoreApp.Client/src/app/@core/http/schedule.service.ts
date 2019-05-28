@@ -13,6 +13,7 @@ export class ScheduleService {
 
     constructor(private _http: HttpClient) {}
 
+    //Class Type
     getClassType(): Observable<ClassType[]>{
         return this._http.get<ClassType[]>(`${this.apiURL}/GetClassType`)
         .pipe(
@@ -45,13 +46,46 @@ export class ScheduleService {
           );
         }
 
+    //Time Table
     GetTimeTable(): Observable<TimeTable[]>{
         return this._http.get<TimeTable[]>(`${this.apiURL}/GetTimeTable`)
         .pipe(
             retry(1),
             catchError(this.handleError)
           );
-    }
+        }
+
+    GetTimeTableWithGraph(): Observable<TimeTable[]>{
+        return this._http.get<TimeTable[]>(`${this.apiURL}/GetTimeTableWithGraph`)
+        .pipe(
+            retry(1),
+            catchError(this.handleError)
+            );
+        }
+
+    AddTimeTable(value : TimeTable): Observable<any>{
+        return this._http.post<TimeTable>(`${this.apiURL}/AddTimeTable`, value)
+        .pipe(
+            retry(1),
+            catchError(this.handleError)
+            );
+        }
+
+    UpdateTimeTable(value : TimeTable): Observable<any>{
+        return this._http.post<TimeTable>(`${this.apiURL}/UpdateTimeTable`, value)
+        .pipe(
+            retry(1),
+            catchError(this.handleError)
+            );
+        }
+
+    DeleteTimeTable(id: number): Observable<any> {
+        return this._http.delete(`${this.apiURL}/DeleteTimeTable/${id}`)
+        .pipe(
+            retry(1),
+            catchError(this.handleError)
+            );
+        }
 
     handleError(error) {
         let errorMessage = '';

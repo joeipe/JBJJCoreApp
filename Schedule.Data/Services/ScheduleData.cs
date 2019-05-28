@@ -58,7 +58,13 @@ namespace Schedule.Data.Services
         public IList<TimeTableViewModel> GetTimeTable()
         {
             var timeTablesData = _scheduleUow.TimeTablesRepo.GetAll();
-            //var timeTablesData = _timeTableRepo.SearchForInclude(x => x.Id>0, i => i.ClassType);
+            var timeTablesVM = ObjectMapper.Mapper.Map<IList<TimeTableViewModel>>(timeTablesData);
+            return timeTablesVM;
+        }
+
+        public IList<TimeTableViewModel> GetTimeTableWithGraph()
+        {
+            var timeTablesData = _scheduleUow.TimeTablesRepo.SearchForInclude(x => x.Id != 0, i => i.ClassType);
             var timeTablesVM = ObjectMapper.Mapper.Map<IList<TimeTableViewModel>>(timeTablesData);
             return timeTablesVM;
         }
