@@ -5,7 +5,7 @@ import { Observable, throwError } from 'rxjs';
 import { retry, catchError } from 'rxjs/operators';
 
 @Injectable({
-    providedIn: 'root'
+    providedIn: 'root',
   })
 export class ScheduleService {
     apiRoot: string = 'https://localhost:44340/api';
@@ -13,28 +13,28 @@ export class ScheduleService {
 
     constructor(private _http: HttpClient) {}
 
-    //Class Type
-    getClassType(): Observable<ClassType[]>{
+    // Class Type
+    getClassType(): Observable<ClassType[]> {
         return this._http.get<ClassType[]>(`${this.apiURL}/GetClassType`)
         .pipe(
             retry(1),
-            catchError(this.handleError)
+            catchError(this.handleError),
           );
         }
 
-    AddClassType(value : ClassType): Observable<any>{
+    AddClassType(value: ClassType): Observable<any> {
         return this._http.post<ClassType>(`${this.apiURL}/AddClassType`, value)
         .pipe(
             retry(1),
-            catchError(this.handleError)
+            catchError(this.handleError),
             );
         }
 
-    UpdateClassType(value : ClassType): Observable<any>{
+    UpdateClassType(value: ClassType): Observable<any> {
         return this._http.post<ClassType>(`${this.apiURL}/UpdateClassType`, value)
         .pipe(
             retry(1),
-            catchError(this.handleError)
+            catchError(this.handleError),
             );
         }
 
@@ -42,40 +42,40 @@ export class ScheduleService {
         return this._http.delete(`${this.apiURL}/DeleteClassType/${id}`)
         .pipe(
             retry(1),
-            catchError(this.handleError)
+            catchError(this.handleError),
           );
         }
 
-    //Time Table
-    GetTimeTable(): Observable<TimeTable[]>{
+    // Time Table
+    GetTimeTable(): Observable<TimeTable[]> {
         return this._http.get<TimeTable[]>(`${this.apiURL}/GetTimeTable`)
         .pipe(
             retry(1),
-            catchError(this.handleError)
+            catchError(this.handleError),
           );
         }
 
-    GetTimeTableWithGraph(): Observable<TimeTable[]>{
+    GetTimeTableWithGraph(): Observable<TimeTable[]> {
         return this._http.get<TimeTable[]>(`${this.apiURL}/GetTimeTableWithGraph`)
         .pipe(
             retry(1),
-            catchError(this.handleError)
+            catchError(this.handleError),
             );
         }
 
-    AddTimeTable(value : TimeTable): Observable<any>{
+    AddTimeTable(value: TimeTable): Observable<any> {
         return this._http.post<TimeTable>(`${this.apiURL}/AddTimeTable`, value)
         .pipe(
             retry(1),
-            catchError(this.handleError)
+            catchError(this.handleError),
             );
         }
 
-    UpdateTimeTable(value : TimeTable): Observable<any>{
+    UpdateTimeTable(value: TimeTable): Observable<any> {
         return this._http.post<TimeTable>(`${this.apiURL}/UpdateTimeTable`, value)
         .pipe(
             retry(1),
-            catchError(this.handleError)
+            catchError(this.handleError),
             );
         }
 
@@ -83,7 +83,7 @@ export class ScheduleService {
         return this._http.delete(`${this.apiURL}/DeleteTimeTable/${id}`)
         .pipe(
             retry(1),
-            catchError(this.handleError)
+            catchError(this.handleError),
             );
         }
 

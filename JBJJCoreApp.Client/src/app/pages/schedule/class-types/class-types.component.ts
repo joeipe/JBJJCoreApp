@@ -37,27 +37,27 @@ export class ClassTypesComponent implements OnInit {
   constructor(private scheduleService: ScheduleService) {}
 
   ngOnInit() {
-    this.scheduleService.getClassType().subscribe((data)=>{
+    this.scheduleService.getClassType().subscribe((data) => {
       this.source.load(data);
     });
   }
 
   onCreateConfirm(event): void {
-    this.scheduleService.AddClassType(event.newData).subscribe(()=>{
+    this.scheduleService.AddClassType(event.newData).subscribe(() => {
       event.confirm.resolve();
     });
   }
 
   onEditConfirm(event): void {
     event.newData.isDirty = true;
-    this.scheduleService.UpdateClassType(event.newData).subscribe(()=>{
+    this.scheduleService.UpdateClassType(event.newData).subscribe(() => {
       event.confirm.resolve();
     });
   }
 
   onDeleteConfirm(event): void {
     if (window.confirm('Are you sure you want to delete?')) {
-      this.scheduleService.DeleteClassType(event.data.id).subscribe(()=>{
+      this.scheduleService.DeleteClassType(event.data.id).subscribe(() => {
         event.confirm.resolve();
       });
     } else {

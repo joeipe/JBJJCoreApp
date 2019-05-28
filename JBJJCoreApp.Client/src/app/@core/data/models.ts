@@ -13,5 +13,5 @@ export interface TimeTable {
     endTimeHr: number;
     endTimeMin: number;
     classTypeId: number;
-    classType: ClassType
+    classType: ClassType;
 }

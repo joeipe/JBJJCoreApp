@@ -22,22 +22,22 @@ export class TimeTableComponent implements OnInit {
 
   loadPage(): void {
     this.dayOfWeekOptions = [
-      {value: 'Monday', title:'Monday'},
-      {value: 'Tuesday', title:'Tuesday'},
-      {value: 'Wednesday', title:'Wednesday'},
-      {value: 'Thursday', title:'Thursday'},
-      {value: 'Friday', title:'Friday'},
-      {value: 'Saturday', title:'Saturday'},
-      {value: 'Sunday', title:'Sunday'},
+      {value: 'Monday', title: 'Monday'},
+      {value: 'Tuesday', title: 'Tuesday'},
+      {value: 'Wednesday', title: 'Wednesday'},
+      {value: 'Thursday', title: 'Thursday'},
+      {value: 'Friday', title: 'Friday'},
+      {value: 'Saturday', title: 'Saturday'},
+      {value: 'Sunday', title: 'Sunday'},
     ];
 
     this.classTypeOptions = [
-      {value: '1', title:'BJJ Gi All Levels'},
-      {value: '2', title:'BJJ Gi Fundamenals'},
-      {value: '3', title:'BJJ No Gi All Levels'},
-      {value: '4', title:'BJJ Gi Biginners'},
-      {value: '5', title:'BJJ Advanced Class'},
-      {value: '6', title:'BJJ Competition Class'},
+      {value: '1', title: 'BJJ Gi All Levels'},
+      {value: '2', title: 'BJJ Gi Fundamenals'},
+      {value: '3', title: 'BJJ No Gi All Levels'},
+      {value: '4', title: 'BJJ Gi Biginners'},
+      {value: '5', title: 'BJJ Advanced Class'},
+      {value: '6', title: 'BJJ Competition Class'},
     ];
 
     this.settings = {
@@ -73,7 +73,7 @@ export class TimeTableComponent implements OnInit {
               selectText: 'All',
               list: this.dayOfWeekOptions,
             },
-          }
+          },
         },
         startTimeHr: {
           title: 'Start Time Hr',
@@ -94,8 +94,8 @@ export class TimeTableComponent implements OnInit {
         'classTypeName': {
           title: 'Class Type',
           type: 'string',
-          valuePrepareFunction: (cell: any,row: TimeTable) => {
-            if(row.classType)
+          valuePrepareFunction: (cell: any, row: TimeTable) => {
+            if (row.classType)
               return row.classType.name;
           },
           editor: {
@@ -112,14 +112,14 @@ export class TimeTableComponent implements OnInit {
   }
 
   loadTimeTable(): void {
-    this.scheduleService.GetTimeTableWithGraph().subscribe((data)=>{
+    this.scheduleService.GetTimeTableWithGraph().subscribe((data) => {
       this.source.load(data);
     });
   }
 
   onCreateConfirm(event): void {
     event.newData.classTypeId = event.newData.classTypeName;
-    this.scheduleService.AddTimeTable(event.newData).subscribe(()=>{
+    this.scheduleService.AddTimeTable(event.newData).subscribe(() => {
       event.confirm.resolve();
     });
   }
@@ -128,14 +128,14 @@ export class TimeTableComponent implements OnInit {
     event.newData.classTypeId = event.newData.classTypeName;
     event.newData.classType = null;
     event.newData.isDirty = true;
-    this.scheduleService.UpdateTimeTable(event.newData).subscribe(()=>{
+    this.scheduleService.UpdateTimeTable(event.newData).subscribe(() => {
       event.confirm.resolve();
     });
   }
 
   onDeleteConfirm(event): void {
     if (window.confirm('Are you sure you want to delete?')) {
-      this.scheduleService.DeleteTimeTable(event.data.id).subscribe(()=>{
+      this.scheduleService.DeleteTimeTable(event.data.id).subscribe(() => {
         event.confirm.resolve();
       });
     } else {
