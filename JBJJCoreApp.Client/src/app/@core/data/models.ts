@@ -31,3 +31,57 @@ export interface Person {
     stripe: number;
     grade: Grade;
 }
+
+export interface Outcome {
+    id: number;
+    isDirty: boolean;
+    name: string;
+}
+
+export interface Attendance {
+    id: number;
+    isDirty: boolean;
+    timeTableId: number;
+    attendedOn: Date;
+    techniqueOfTheDay: string;
+    timeTableClassAttended: TimeTableClassAttended;
+}
+
+export interface AttendanceDetailed {
+    id: number;
+    isDirty: boolean;
+    timeTableId: number;
+    attendedOn: Date;
+    techniqueOfTheDay: string;
+    timeTableClassAttended: TimeTableClassAttended;
+    sparringDetails: SparringDetails[]
+}
+
+export interface SparringDetails {
+    id: number;
+    isDirty: boolean;
+    attendanceId: number;
+    personId: number;
+    outcomeId: number;
+    techniqueUsed: string;
+    attendance: Attendance;
+    personSparringPartner: PersonSparringPartner;
+    outcome: Outcome
+}
+
+export interface TimeTableClassAttended {
+    id: number;
+    dayofWeek: string;
+    startTimeHr: number;
+    startTimeMin: number;
+    endTimeHr: number;
+    endTimeMin: number;
+    classType: string;
+}
+
+export interface PersonSparringPartner {
+    id: number;
+    fullName: string;
+    stripe: number;
+    grade: string;
+}
