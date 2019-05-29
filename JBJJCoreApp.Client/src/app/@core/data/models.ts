@@ -54,7 +54,7 @@ export interface AttendanceDetailed {
     attendedOn: Date;
     techniqueOfTheDay: string;
     timeTableClassAttended: TimeTableClassAttended;
-    sparringDetails: SparringDetails[]
+    sparringDetails: SparringDetails[];
 }
 
 export interface SparringDetails {
@@ -66,7 +66,7 @@ export interface SparringDetails {
     techniqueUsed: string;
     attendance: Attendance;
     personSparringPartner: PersonSparringPartner;
-    outcome: Outcome
+    outcome: Outcome;
 }
 
 export interface TimeTableClassAttended {
