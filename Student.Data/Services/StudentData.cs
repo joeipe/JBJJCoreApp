@@ -62,6 +62,17 @@ namespace Student.Data.Services
             return personsVM;
         }
 
+        public IList<PersonViewModel> GetPersonWithGraph()
+        {
+            var personsData = _studentUow.PeopleRepo
+                .GetAllInclude
+                (
+                    i => i.Grade
+                );
+            var personsVM = ObjectMapper.Mapper.Map<IList<PersonViewModel>>(personsData);
+            return personsVM;
+        }
+
         public PersonViewModel GetPersonById(int id)
         {
             var personData = _studentUow.PeopleRepo.GetById(id);

@@ -130,6 +130,19 @@ namespace JBJJCoreApp.Web.Controllers
             }
         }
 
+        [HttpGet]
+        public ActionResult GetPersonWithGraph()
+        {
+            try
+            {
+                return Ok(_studentData.GetPersonWithGraph());
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, ex);
+            }
+        }
+
         [HttpGet("{id}")]
         public ActionResult GetPersonById(int id)
         {

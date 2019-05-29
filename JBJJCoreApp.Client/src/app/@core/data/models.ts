@@ -15,3 +15,19 @@ export interface TimeTable {
     classTypeId: number;
     classType: ClassType;
 }
+
+export interface Grade {
+    id: number;
+    isDirty: boolean;
+    name: string;
+}
+
+export interface Person {
+    id: number;
+    isDirty: boolean;
+    firstName: string;
+    lastName: string;
+    gradeId: number;
+    stripe: number;
+    grade: Grade;
+}

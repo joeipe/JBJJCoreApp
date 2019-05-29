@@ -20,7 +20,7 @@ export class ScheduleService {
             retry(1),
             catchError(this.handleError),
           );
-        }
+    }
 
     AddClassType(value: ClassType): Observable<any> {
         return this._http.post<ClassType>(`${this.apiURL}/AddClassType`, value)
@@ -28,7 +28,7 @@ export class ScheduleService {
             retry(1),
             catchError(this.handleError),
             );
-        }
+    }
 
     UpdateClassType(value: ClassType): Observable<any> {
         return this._http.post<ClassType>(`${this.apiURL}/UpdateClassType`, value)
@@ -36,7 +36,7 @@ export class ScheduleService {
             retry(1),
             catchError(this.handleError),
             );
-        }
+    }
 
     DeleteClassType(id: number): Observable<any> {
         return this._http.delete(`${this.apiURL}/DeleteClassType/${id}`)
@@ -44,7 +44,7 @@ export class ScheduleService {
             retry(1),
             catchError(this.handleError),
           );
-        }
+    }
 
     // Time Table
     GetTimeTable(): Observable<TimeTable[]> {
@@ -53,7 +53,7 @@ export class ScheduleService {
             retry(1),
             catchError(this.handleError),
           );
-        }
+    }
 
     GetTimeTableWithGraph(): Observable<TimeTable[]> {
         return this._http.get<TimeTable[]>(`${this.apiURL}/GetTimeTableWithGraph`)
@@ -61,7 +61,7 @@ export class ScheduleService {
             retry(1),
             catchError(this.handleError),
             );
-        }
+    }
 
     AddTimeTable(value: TimeTable): Observable<any> {
         return this._http.post<TimeTable>(`${this.apiURL}/AddTimeTable`, value)
@@ -69,7 +69,7 @@ export class ScheduleService {
             retry(1),
             catchError(this.handleError),
             );
-        }
+    }
 
     UpdateTimeTable(value: TimeTable): Observable<any> {
         return this._http.post<TimeTable>(`${this.apiURL}/UpdateTimeTable`, value)
@@ -77,7 +77,7 @@ export class ScheduleService {
             retry(1),
             catchError(this.handleError),
             );
-        }
+    }
 
     DeleteTimeTable(id: number): Observable<any> {
         return this._http.delete(`${this.apiURL}/DeleteTimeTable/${id}`)
@@ -85,7 +85,7 @@ export class ScheduleService {
             retry(1),
             catchError(this.handleError),
             );
-        }
+    }
 
     handleError(error) {
         let errorMessage = '';
@@ -98,5 +98,5 @@ export class ScheduleService {
         }
         window.alert(errorMessage);
         return throwError(errorMessage);
-      }
     }
+}
