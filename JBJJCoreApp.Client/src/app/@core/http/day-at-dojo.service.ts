@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Outcome } from '../data/models';
+import { Outcome, Attendance } from '../data/models';
 import { Observable, throwError } from 'rxjs';
 import { retry, catchError } from 'rxjs/operators';
 
@@ -40,6 +40,39 @@ export class DayAtDojoService {
 
     deleteOutcome(id: number): Observable<any> {
         return this._http.delete(`${this.apiURL}/DeleteOutcome/${id}`)
+        .pipe(
+            retry(1),
+            catchError(this.handleError),
+        );
+    }
+
+    // Attendance
+    getAttendanceWithTimeTableGraph(): Observable<Attendance[]> {
+        return this._http.get<Attendance[]>(`${this.apiURL}/GetAttendanceWithTimeTableGraph`)
+        .pipe(
+            retry(1),
+            catchError(this.handleError),
+          );
+    }
+
+    addAttendance(value: Attendance): Observable<any> {
+        return this._http.post<Attendance>(`${this.apiURL}/AddAttendance`, value)
+        .pipe(
+            retry(1),
+            catchError(this.handleError),
+        );
+    }
+
+    updateAttendance(value: Attendance): Observable<any> {
+        return this._http.post<Attendance>(`${this.apiURL}/UpdateAttendance`, value)
+        .pipe(
+            retry(1),
+            catchError(this.handleError),
+        );
+    }
+
+    deleteAttendance(id: number): Observable<any> {
+        return this._http.delete(`${this.apiURL}/DeleteAttendance/${id}`)
         .pipe(
             retry(1),
             catchError(this.handleError),

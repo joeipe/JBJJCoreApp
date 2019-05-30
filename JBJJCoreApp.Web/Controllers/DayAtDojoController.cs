@@ -130,6 +130,19 @@ namespace JBJJCoreApp.Web.Controllers
             }
         }
 
+        [HttpGet]
+        public ActionResult GetAttendanceWithTimeTableGraph()
+        {
+            try
+            {
+                return Ok(_dayAtDojoData.GetAttendanceWithTimeTableGraph());
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, ex);
+            }
+        }
+
         [HttpGet("{id}")]
         public ActionResult GetAttendanceById(int id)
         {

@@ -62,6 +62,17 @@ namespace DayAtDojo.Data.Services
             return attendancesVM;
         }
 
+        public IList<AttendanceViewModel> GetAttendanceWithTimeTableGraph()
+        {
+            var attendancesData = _dayAtDojoUow.AttendanceRepo.GetAll();
+            foreach (var item in attendancesData)
+            {
+                item.TimeTableClassAttended = _dayAtDojoUow.TimeTableClassAttendedRepo.GetById(item.TimeTableId);
+            }
+            var attendancesVM = ObjectMapper.Mapper.Map<IList<AttendanceViewModel>>(attendancesData);
+            return attendancesVM;
+        }
+
         public AttendanceViewModel GetAttendanceById(int id)
         {
             var attendanceData = _dayAtDojoUow.AttendanceRepo.GetById(id);
@@ -69,7 +80,7 @@ namespace DayAtDojo.Data.Services
             return attendanceVM;
         }
 
-        public AttendanceViewModel GetAttendanceWithGraphById(int id)
+        public AttendanceDetailedViewModel GetAttendanceWithGraphById(int id)
         {
             var attendanceData = _dayAtDojoUow.AttendanceRepo.SearchForInclude
                 (
