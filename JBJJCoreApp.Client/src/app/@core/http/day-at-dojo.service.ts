@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Outcome, Attendance, AttendanceDetailed } from '../data/models';
+import { Outcome, Attendance, AttendanceDetailed, SparringDetails } from '../data/models';
 import { Observable, throwError } from 'rxjs';
 import { retry, catchError } from 'rxjs/operators';
 
@@ -56,7 +56,7 @@ export class DayAtDojoService {
     }
 
     getAttendanceWithGraphById(id: number): Observable<AttendanceDetailed> {
-        return this._http.get<AttendanceDetailed>(`${this.apiURL}/GetAttendanceWithGraphById`)
+        return this._http.get<AttendanceDetailed>(`${this.apiURL}/GetAttendanceWithGraphById/${id}`)
         .pipe(
             retry(1),
             catchError(this.handleError),
@@ -81,6 +81,30 @@ export class DayAtDojoService {
 
     deleteAttendance(id: number): Observable<any> {
         return this._http.delete(`${this.apiURL}/DeleteAttendance/${id}`)
+        .pipe(
+            retry(1),
+            catchError(this.handleError),
+        );
+    }
+
+    addSparringDetails(value: SparringDetails): Observable<any> {
+        return this._http.post<Attendance>(`${this.apiURL}/AddSparringDetails`, value)
+        .pipe(
+            retry(1),
+            catchError(this.handleError),
+        );
+    }
+
+    updateSparringDetails(value: SparringDetails): Observable<any> {
+        return this._http.post<Attendance>(`${this.apiURL}/UpdateSparringDetails`, value)
+        .pipe(
+            retry(1),
+            catchError(this.handleError),
+        );
+    }
+
+    deleteSparringDetails(id: number): Observable<any> {
+        return this._http.delete(`${this.apiURL}/DeleteSparringDetails/${id}`)
         .pipe(
             retry(1),
             catchError(this.handleError),

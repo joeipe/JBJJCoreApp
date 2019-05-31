@@ -51,10 +51,6 @@ export const MENU_ITEMS: NbMenuItem[] = [
         title: 'Attendance',
         link: '/pages/dayatdojo/attendance',
       },
-      {
-        title: 'Sparring Details',
-        link: '/pages/dayatdojo/sparringdetails',
-      },
     ],
   },
   {

@@ -4,6 +4,9 @@ import { DayAtDojoService } from '../../../@core/http/day-at-dojo.service';
 import { StudentService } from '../../../@core/http/student.service';
 import { forkJoin } from 'rxjs';
 import { map } from 'rxjs/operators';
+import {  SparringDetails, AttendanceDetailed } from '../../../@core/data/models';
+import { ActivatedRoute } from '@angular/router';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'ngx-sparring-details',
@@ -11,14 +14,21 @@ import { map } from 'rxjs/operators';
   styleUrls: ['./sparring-details.component.scss'],
 })
 export class SparringDetailsComponent implements OnInit {
+  attendanceId: number;
+  attendanceDetailed: AttendanceDetailed;
   outcomeOptions: any[] = [];
   peopleOptions: any[] = [];
   settings: any;
   source: LocalDataSource = new LocalDataSource();
 
-  constructor(private dayAtDojoService: DayAtDojoService, private studentService: StudentService) {}
+  constructor(
+    private dayAtDojoService: DayAtDojoService,
+    private studentService: StudentService,
+    private route: ActivatedRoute,
+    private location: Location) {}
 
   ngOnInit() {
+    this.attendanceId = this.route.snapshot.params.id;
     this.loadPage();
   }
 
@@ -26,10 +36,10 @@ export class SparringDetailsComponent implements OnInit {
     const serviceHub = forkJoin(
       [
         this.dayAtDojoService.getOutcome().pipe(map(r => r.map(v => ({value: v.id, title: v.name})))),
-        this.studentService.getPerson().pipe(map(r =>
+        this.studentService.GetPersonWithGraph().pipe(map(r =>
           r.map(v =>
             ({value: v.id,
-              title: `${v.firstName} ${v.lastName}`}),
+              title: `${v.firstName} ${v.lastName} (${v.grade.name} ${v.stripe})`}),
           ),
         )),
       ],
@@ -57,6 +67,35 @@ export class SparringDetailsComponent implements OnInit {
           confirmDelete: true,
         },
         columns: {
+          'personName': {
+            title: 'Person',
+            type: 'string',
+            valuePrepareFunction: (cell: any, row: SparringDetails) => {
+              if (row.personSparringPartner)
+                return `${row.personSparringPartner.fullName}
+                  (${row.personSparringPartner.grade}   ${row.personSparringPartner.stripe})`;
+            },
+            editor: {
+              type: 'list',
+              config: {
+                list: this.peopleOptions,
+              },
+            },
+          },
+          'outcomeName': {
+            title: 'Outcome',
+            type: 'string',
+            valuePrepareFunction: (cell: any, row: SparringDetails) => {
+              if (row.outcome)
+                return row.outcome.name;
+            },
+            editor: {
+              type: 'list',
+              config: {
+                list: this.outcomeOptions,
+              },
+            },
+          },
           techniqueUsed: {
             title: 'Technique Used',
             type: 'string',
@@ -69,24 +108,28 @@ export class SparringDetailsComponent implements OnInit {
   }
 
   loadAttendanceWithSparringDetails(): void {
-    this.dayAtDojoService.getAttendanceWithGraphById(1).subscribe((data) => {
+    this.dayAtDojoService.getAttendanceWithGraphById(this.attendanceId).subscribe((data) => {
+      this.attendanceDetailed = data;
       this.source.load(data.sparringDetails);
     });
   }
 
   onCreateConfirm(event): void {
-    event.newData.timeTableId = event.newData.timeTableConcat;
-    this.dayAtDojoService.addAttendance(event.newData).subscribe(() => {
+    event.newData.attendanceId = this.attendanceDetailed.id;
+    event.newData.personId = event.newData.personName;
+    event.newData.outcomeId = event.newData.outcomeName;
+    this.dayAtDojoService.addSparringDetails(event.newData).subscribe(() => {
       event.confirm.resolve();
       this.loadAttendanceWithSparringDetails();
     });
   }
 
   onEditConfirm(event): void {
-    event.newData.timeTableId = event.newData.timeTableConcat;
-    event.newData.timeTableClassAttended = null;
+    event.newData.personId = event.newData.personName;
+    event.newData.outcomeId = event.newData.outcomeName;
+    event.newData.outcome = null;
     event.newData.isDirty = true;
-    this.dayAtDojoService.updateAttendance(event.newData).subscribe(() => {
+    this.dayAtDojoService.updateSparringDetails(event.newData).subscribe(() => {
       event.confirm.resolve();
       this.loadAttendanceWithSparringDetails();
     });
@@ -94,12 +137,16 @@ export class SparringDetailsComponent implements OnInit {
 
   onDeleteConfirm(event): void {
     if (window.confirm('Are you sure you want to delete?')) {
-      this.dayAtDojoService.deleteAttendance(event.data.id).subscribe(() => {
+      this.dayAtDojoService.deleteSparringDetails(event.data.id).subscribe(() => {
         event.confirm.resolve();
         this.loadAttendanceWithSparringDetails();
       });
     } else {
       event.confirm.reject();
     }
+  }
+
+  onBackClick(): void {
+    this.location.back();
   }
 }

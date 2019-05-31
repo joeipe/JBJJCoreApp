@@ -16,7 +16,7 @@ const routes: Routes = [{
     path: 'attendance',
     component: AttendanceComponent,
   }, {
-    path: 'sparringdetails',
+    path: 'sparringdetails/:id',
     component: SparringDetailsComponent,
   }],
 }];

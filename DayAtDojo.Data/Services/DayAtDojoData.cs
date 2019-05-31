@@ -91,6 +91,10 @@ namespace DayAtDojo.Data.Services
                         .ThenInclude(x => x.Outcome)
                 ).FirstOrDefault();
             attendanceData.TimeTableClassAttended = _dayAtDojoUow.TimeTableClassAttendedRepo.GetById(attendanceData.TimeTableId);
+            foreach (var item in attendanceData.SparringDetails)
+            {
+                item.PersonSparringPartner = _dayAtDojoUow.PersonSparringPartnersRepo.GetById(item.PersonId);
+            }
             var attendanceVM = ObjectMapper.Mapper.Map<AttendanceDetailedViewModel>(attendanceData);
             return attendanceVM;
         }

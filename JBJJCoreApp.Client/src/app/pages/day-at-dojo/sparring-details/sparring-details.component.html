@@ -4,7 +4,42 @@
   </nb-card-header>
 
   <nb-card-body>
+    <div class="row">
+      <div class="col-md-12 col-sm-12">
+        <div class="col-md-4 float-left">
+          <div class="form-group">
+            <label class="form-control-label">Attended On</label>
+            <div>{{attendanceDetailed?.attendedOn}}</div>
+          </div>
+        </div>
+        <div class="col-md-4 float-left">
+          <div class="form-group">
+            <label class="form-control-label">Technique Of The Day</label>
+            <div>{{attendanceDetailed?.techniqueOfTheDay}}</div>
+          </div>
+        </div>
+        <div class="col-md-4 float-left">
+          <div class="form-group">
+            <label class="form-control-label">Time Table</label>
+            <div>{{attendanceDetailed?.timeTableClassAttended.dayofWeek}} {{attendanceDetailed?.timeTableClassAttended.startTimeHr}}:{{attendanceDetailed?.timeTableClassAttended.startTimeMin}} to {{attendanceDetailed?.timeTableClassAttended.endTimeHr}}:{{attendanceDetailed?.timeTableClassAttended.endTimeMin}} ({{attendanceDetailed?.timeTableClassAttended.classType}})</div>
+          </div>
+        </div>
+      </div>
+    </div>
     <ng2-smart-table [settings]="settings" [source]="source" (createConfirm)="onCreateConfirm($event)" (editConfirm)="onEditConfirm($event)" (deleteConfirm)="onDeleteConfirm($event)">
     </ng2-smart-table>
+    <br/>
+    <div class="row">
+      <div class="example-container col-md-4">
+          <div class="container-btn">
+              <button nbButton
+                      status="primary"
+                      class="btn-demo"
+                      (click)="onBackClick($event)">
+                Back
+              </button>
+            </div>
+      </div>
+    </div>
   </nb-card-body>
 </nb-card>

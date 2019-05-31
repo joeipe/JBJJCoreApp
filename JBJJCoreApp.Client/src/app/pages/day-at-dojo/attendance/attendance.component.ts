@@ -5,6 +5,7 @@ import { forkJoin } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { ScheduleService } from '../../../@core/http/schedule.service';
 import { Attendance } from '../../../@core/data/models';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'ngx-attendance',
@@ -16,7 +17,10 @@ export class AttendanceComponent implements OnInit {
   settings: any;
   source: LocalDataSource = new LocalDataSource();
 
-  constructor(private dayAtDojoService: DayAtDojoService, private scheduleService: ScheduleService) {}
+  constructor(
+    private dayAtDojoService: DayAtDojoService,
+    private scheduleService: ScheduleService,
+    private router: Router) {}
 
   ngOnInit() {
     this.loadPage();
@@ -130,5 +134,10 @@ export class AttendanceComponent implements OnInit {
     } else {
       event.confirm.reject();
     }
+  }
+
+  onUserRowSelect(event): void {
+    const id = event.data.id;
+    this.router.navigate([`/pages/dayatdojo/sparringdetails/${id}`]);
   }
 }
