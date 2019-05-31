@@ -42,7 +42,7 @@ export interface Attendance {
     id: number;
     isDirty: boolean;
     timeTableId: number;
-    attendedOn: Date;
+    attendedOn: string;
     techniqueOfTheDay: string;
     timeTableClassAttended: TimeTableClassAttended;
 }

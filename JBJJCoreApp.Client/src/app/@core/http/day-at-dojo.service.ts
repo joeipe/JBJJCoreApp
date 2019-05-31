@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Outcome, Attendance } from '../data/models';
+import { Outcome, Attendance, AttendanceDetailed } from '../data/models';
 import { Observable, throwError } from 'rxjs';
 import { retry, catchError } from 'rxjs/operators';
 
@@ -49,6 +49,14 @@ export class DayAtDojoService {
     // Attendance
     getAttendanceWithTimeTableGraph(): Observable<Attendance[]> {
         return this._http.get<Attendance[]>(`${this.apiURL}/GetAttendanceWithTimeTableGraph`)
+        .pipe(
+            retry(1),
+            catchError(this.handleError),
+          );
+    }
+
+    getAttendanceWithGraphById(id: number): Observable<AttendanceDetailed> {
+        return this._http.get<AttendanceDetailed>(`${this.apiURL}/GetAttendanceWithGraphById`)
         .pipe(
             retry(1),
             catchError(this.handleError),

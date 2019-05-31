@@ -68,7 +68,7 @@ export class AttendanceComponent implements OnInit {
             type: 'string',
             valuePrepareFunction: (cell: any, row: Attendance) => {
               if (row.attendedOn)
-                return formatDate(row.attendedOn, 'dd/MM/yyyy', 'en-US');
+                return row.attendedOn;
             },
           },
           techniqueOfTheDay : {

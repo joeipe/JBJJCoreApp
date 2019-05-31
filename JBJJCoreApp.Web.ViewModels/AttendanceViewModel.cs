@@ -6,7 +6,7 @@ namespace JBJJCoreApp.Web.ViewModels
     public class AttendanceViewModel : VMBase
     {
         public int TimeTableId { get; set; }
-        public DateTime AttendedOn { get; set; }
+        public string AttendedOn { get; set; }
         public string TechniqueOfTheDay { get; set; }
         public TimeTableClassAttendedViewModel TimeTableClassAttended { get; set; }
     }

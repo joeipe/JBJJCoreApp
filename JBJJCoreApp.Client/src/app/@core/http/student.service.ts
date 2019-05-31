@@ -47,6 +47,14 @@ export class StudentService {
     }
 
     // Grade
+    getPerson(): Observable<Person[]> {
+        return this._http.get<Person[]>(`${this.apiURL}/GetPerson`)
+        .pipe(
+            retry(1),
+            catchError(this.handleError),
+        );
+    }
+
     GetPersonWithGraph(): Observable<Person[]> {
         return this._http.get<Person[]>(`${this.apiURL}/GetPersonWithGraph`)
         .pipe(

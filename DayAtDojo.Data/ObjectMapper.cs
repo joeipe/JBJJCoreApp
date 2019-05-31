@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
 using DayAtDojo.Domain;
 using JBJJCoreApp.Web.ViewModels;
+using SharedKernel.ExtensionMethods;
+using System;
 
 namespace DayAtDojo.Data
 {
@@ -28,10 +30,13 @@ namespace DayAtDojo.Data
                 cfg.CreateMap<Outcome, OutcomeViewModel>();
                 cfg.CreateMap<OutcomeViewModel, Outcome>();
 
-                cfg.CreateMap<Attendance, AttendanceViewModel>();
-                cfg.CreateMap<AttendanceViewModel, Attendance>();
+                cfg.CreateMap<Attendance, AttendanceViewModel>()
+                    .ForMember(dest => dest.AttendedOn, opt => opt.MapFrom(src => src.AttendedOn.ParseDate()));
+                cfg.CreateMap<AttendanceViewModel, Attendance>()
+                    .ForMember(dest => dest.AttendedOn, opt => opt.MapFrom(src => src.AttendedOn.ParseDate()));
 
-                cfg.CreateMap<Attendance, AttendanceDetailedViewModel>();
+                cfg.CreateMap<Attendance, AttendanceDetailedViewModel>()
+                    .ForMember(dest => dest.AttendedOn, opt => opt.MapFrom(src => src.AttendedOn.ParseDate()));
 
                 cfg.CreateMap<SparringDetails, SparringDetailsViewModel>();
                 cfg.CreateMap<SparringDetailsViewModel, SparringDetails>();
