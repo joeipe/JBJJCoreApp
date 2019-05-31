@@ -5,7 +5,6 @@ import { forkJoin } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { ScheduleService } from '../../../@core/http/schedule.service';
 import { Attendance } from '../../../@core/data/models';
-import { formatDate } from '@angular/common';
 
 @Component({
   selector: 'ngx-attendance',

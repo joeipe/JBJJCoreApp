@@ -26,7 +26,12 @@ export class SparringDetailsComponent implements OnInit {
     const serviceHub = forkJoin(
       [
         this.dayAtDojoService.getOutcome().pipe(map(r => r.map(v => ({value: v.id, title: v.name})))),
-        this.studentService.getPerson().pipe(map(r => r.map(v => ({value: v.id, title: `${v.firstName} ${v.lastName}`})))),
+        this.studentService.getPerson().pipe(map(r =>
+          r.map(v =>
+            ({value: v.id,
+              title: `${v.firstName} ${v.lastName}`}),
+          ),
+        )),
       ],
     );
 
