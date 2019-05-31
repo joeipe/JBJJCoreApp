@@ -127,7 +127,9 @@ export class SparringDetailsComponent implements OnInit {
   onEditConfirm(event): void {
     event.newData.personId = event.newData.personName;
     event.newData.outcomeId = event.newData.outcomeName;
+    event.newData.personSparringPartner = null;
     event.newData.outcome = null;
+    event.newData.attendance = null;
     event.newData.isDirty = true;
     this.dayAtDojoService.updateSparringDetails(event.newData).subscribe(() => {
       event.confirm.resolve();
