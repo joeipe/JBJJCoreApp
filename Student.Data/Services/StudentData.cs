@@ -1,4 +1,5 @@
 ﻿using JBJJCoreApp.Web.ViewModels;
+using Microsoft.EntityFrameworkCore;
 using Student.Domain;
 using System.Collections.Generic;
 using System.Linq;
@@ -67,7 +68,8 @@ namespace Student.Data.Services
             var personsData = _studentUow.PeopleRepo
                 .GetAllInclude
                 (
-                    i => i.Grade
+                    source => source
+                        .Include(x => x.Grade)
                 );
             var personsVM = ObjectMapper.Mapper.Map<IList<PersonViewModel>>(personsData);
             return personsVM;
@@ -86,7 +88,8 @@ namespace Student.Data.Services
                 .SearchForInclude
                 (
                     t => t.Id == id,
-                    i => i.Grade
+                    source => source
+                        .Include(x => x.Grade)
                 )
                 .FirstOrDefault();
             var personVM = ObjectMapper.Mapper.Map<PersonViewModel>(personData);

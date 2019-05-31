@@ -1,5 +1,6 @@
 ﻿using DayAtDojo.Domain;
 using JBJJCoreApp.Web.ViewModels;
+using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -85,7 +86,9 @@ namespace DayAtDojo.Data.Services
             var attendanceData = _dayAtDojoUow.AttendanceRepo.SearchForInclude
                 (
                     a => a.Id == id,
-                    i => i.SparringDetails
+                    source => source
+                        .Include(x => x.SparringDetails)
+                        .ThenInclude(x => x.Outcome)
                 ).FirstOrDefault();
             attendanceData.TimeTableClassAttended = _dayAtDojoUow.TimeTableClassAttendedRepo.GetById(attendanceData.TimeTableId);
             var attendanceVM = ObjectMapper.Mapper.Map<AttendanceDetailedViewModel>(attendanceData);
@@ -129,8 +132,9 @@ namespace DayAtDojo.Data.Services
             var sparringDetailssData = _dayAtDojoUow.SparringDetailsRepo.SearchForInclude
                 (
                     s => s.Id != 0,
-                    i => i.Attendance,
-                    i => i.Outcome
+                    source => source
+                        .Include(x => x.Attendance)
+                        .Include(x => x.Outcome)
                 );
 
             //Person
@@ -155,8 +159,9 @@ namespace DayAtDojo.Data.Services
             var sparringDetailsData = _dayAtDojoUow.SparringDetailsRepo.SearchForInclude
                 (
                     s => s.Id == id,
-                    i => i.Attendance,
-                    i => i.Outcome
+                    source => source
+                        .Include(x => x.Attendance)
+                        .Include(x => x.Outcome)
                 ).FirstOrDefault();
 
             //Person

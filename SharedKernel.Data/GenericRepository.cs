@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Query;
 using SharedKernel.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -60,21 +61,22 @@ namespace SharedKernel.Data
             return _dataTable.Where(predicate).ToList();
         }
 
-        public virtual IEnumerable<TEntity> GetAllInclude(params Expression<Func<TEntity, object>>[] includeProperties)
+        public virtual IEnumerable<TEntity> GetAllInclude(Func<IQueryable<TEntity>, IIncludableQueryable<TEntity, object>> includeProperties)
         {
             return GetAllIncluding(includeProperties).ToList();
         }
 
-        public virtual IEnumerable<TEntity> SearchForInclude(Expression<Func<TEntity, bool>> predicate, params Expression<Func<TEntity, object>>[] includeProperties)
+        public virtual IEnumerable<TEntity> SearchForInclude(Expression<Func<TEntity, bool>> predicate, Func<IQueryable<TEntity>, IIncludableQueryable<TEntity, object>> includeProperties)
         {
             var query = GetAllIncluding(includeProperties);
             return query.Where(predicate).ToList();
         }
 
-        private IQueryable<TEntity> GetAllIncluding(params Expression<Func<TEntity, object>>[] includeProperties)
+        private IQueryable<TEntity> GetAllIncluding(Func<IQueryable<TEntity>, IIncludableQueryable<TEntity, object>> includeProperties)
         {
             IQueryable<TEntity> queryable = _dataTable;
-            return includeProperties.Aggregate(queryable, (current, includeProperty) => current.Include(includeProperty));
+                queryable = includeProperties(queryable);
+            return queryable;
         }
     }
 }

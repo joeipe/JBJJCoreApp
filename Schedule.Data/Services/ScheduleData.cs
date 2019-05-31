@@ -1,4 +1,5 @@
 ﻿using JBJJCoreApp.Web.ViewModels;
+using Microsoft.EntityFrameworkCore;
 using Schedule.Domain;
 using System.Collections.Generic;
 using System.Linq;
@@ -64,7 +65,13 @@ namespace Schedule.Data.Services
 
         public IList<TimeTableViewModel> GetTimeTableWithGraph()
         {
-            var timeTablesData = _scheduleUow.TimeTablesRepo.SearchForInclude(x => x.Id != 0, i => i.ClassType);
+            var timeTablesData = _scheduleUow.TimeTablesRepo
+                .SearchForInclude
+                (
+                    x => x.Id != 0,
+                    source => source
+                        .Include(x => x.ClassType)
+                );
             var timeTablesVM = ObjectMapper.Mapper.Map<IList<TimeTableViewModel>>(timeTablesData);
             return timeTablesVM;
         }
@@ -82,7 +89,8 @@ namespace Schedule.Data.Services
                 .SearchForInclude
                 (
                     t => t.Id == id,
-                    i => i.ClassType
+                    source => source
+                        .Include(x => x.ClassType)
                 )
                 .FirstOrDefault();
             var timeTableVM = ObjectMapper.Mapper.Map<TimeTableViewModel>(timeTableData);
