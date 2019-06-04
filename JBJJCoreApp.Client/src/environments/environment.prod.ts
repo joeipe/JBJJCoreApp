@@ -5,5 +5,5 @@
  */
 export const environment = {
   production: true,
-  apiRoot: 'https://jbjjcoreapp.azurewebsites.net/api'
+  apiRoot: 'https://jbjjcoreapp.azurewebsites.net/api',
 };
