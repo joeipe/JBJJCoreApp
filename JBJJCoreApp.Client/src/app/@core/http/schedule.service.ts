@@ -3,13 +3,13 @@ import { HttpClient } from '@angular/common/http';
 import { ClassType, TimeTable } from '../data/models';
 import { Observable, throwError } from 'rxjs';
 import { retry, catchError } from 'rxjs/operators';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
     providedIn: 'root',
   })
 export class ScheduleService {
-    apiRoot: string = 'https://localhost:44340/api';
-    apiURL: string = `${this.apiRoot}/Schedule`;
+    apiURL: string = `${environment.apiRoot}/Schedule`;
 
     constructor(private _http: HttpClient) {}
 
