@@ -66,6 +66,7 @@ namespace DayAtDojo.Data.Services
         public IList<AttendanceViewModel> GetAttendanceWithTimeTableGraph()
         {
             var attendancesData = _dayAtDojoUow.AttendanceRepo.GetAll();
+            attendancesData = attendancesData.OrderByDescending(o => o.AttendedOn);
             foreach (var item in attendancesData)
             {
                 item.TimeTableClassAttended = _dayAtDojoUow.TimeTableClassAttendedRepo.GetById(item.TimeTableId);
