@@ -1,4 +1,6 @@
 ﻿using JBJJCoreApp.Web.ViewModels;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Student.Data.Services;
@@ -6,6 +8,7 @@ using System;
 
 namespace JBJJCoreApp.Web.Controllers
 {
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     [Route("api/[controller]/[action]")]
     [ApiController]
     public class StudentController : ControllerBase

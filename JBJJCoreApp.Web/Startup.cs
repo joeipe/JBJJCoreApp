@@ -2,15 +2,21 @@
 using DayAtDojo.Data.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.IdentityModel.Tokens;
 using Schedule.Data;
 using Schedule.Data.Services;
 using Student.Data;
 using Student.Data.Services;
 using Swashbuckle.AspNetCore.Swagger;
+using System.Collections.Generic;
+using System.Text;
+using User.Data;
+using User.Domain;
 
 namespace JBJJCoreApp.Web
 {
@@ -21,13 +27,18 @@ namespace JBJJCoreApp.Web
             Configuration = configuration;
         }
 
-        readonly string _corsPolicy = "CorsPolicy";
+        private readonly string _corsPolicy = "CorsPolicy";
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             {//dependency injection
+                services.AddDbContext<UserContext>(options =>
+                    options.UseSqlServer(Configuration.GetConnectionString("JBJJCoreDBConnectionString"))
+                );
+                services.AddTransient<UserSeeder>();
+
                 services.AddDbContext<ScheduleContext>(options =>
                     options.UseSqlServer(Configuration.GetConnectionString("JBJJCoreDBConnectionString"))
                 );
@@ -61,6 +72,24 @@ namespace JBJJCoreApp.Web
                     .AllowAnyHeader()
                     .AllowCredentials());
             });
+            {
+                services.AddIdentity<JBJJUser, IdentityRole>(cfg =>
+                {
+                    cfg.User.RequireUniqueEmail = true;
+                })
+                .AddEntityFrameworkStores<UserContext>();
+
+                services.AddAuthentication()
+                    .AddCookie()
+                    .AddJwtBearer(cfg => {
+                        cfg.TokenValidationParameters = new TokenValidationParameters()
+                        {
+                            ValidIssuer = Configuration["Tokens:Issuer"],
+                            ValidAudience = Configuration["Tokens:Audience"],
+                            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["Tokens:Key"]))
+                        };
+                    });
+            }
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
@@ -68,6 +97,18 @@ namespace JBJJCoreApp.Web
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new Info { Title = "JBJJCoreApp API", Version = "v1" });
+                c.AddSecurityDefinition("Bearer", new ApiKeyScheme
+                {
+                    Description = "Standard Authorization header using the Bearer scheme. Example: \"bearer {token}\"",
+                    In = "header",
+                    Name = "Authorization",
+                    Type = "apiKey"
+                });
+                c.AddSecurityRequirement(new Dictionary<string, IEnumerable<string>>
+                {
+                    { "Bearer", new string[] { } }
+                });
+                //c.OperationFilter<SecurityRequirementsOperationFilter>();
             });
         }
 
@@ -84,6 +125,8 @@ namespace JBJJCoreApp.Web
             }
 
             app.UseCors(_corsPolicy);
+
+            app.UseAuthentication();
 
             app.UseHttpsRedirection();
             app.UseMvc();
